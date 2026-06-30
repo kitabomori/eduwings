@@ -1,0 +1,123 @@
+<!-- ============================================================
+     ticker.html – scrolling news ticker for the Home page only.
+     Shows the 5 most recent items from blogs, opeds, letters,
+     and book_reviews combined, sorted by date (newest first).
+
+     COLOURS:
+       Background: #FFFFFF (dark mode: #1a1a1a)
+       Text:       #00C851 (bright green)
+       Border:     1px bottom in #009F93
+       Heading:    #009F93
+
+     ANIMATION: CSS-only marquee. Pauses on hover.
+     RTL: animation-direction reversed for dir="rtl" pages.
+     No icons, no emoji, plain text only.
+     ============================================================ -->
+
+<!-- Step 1: Collect all items from the four collections into one array -->
+{% assign ticker_items = "" | split: "" %}
+
+{% for item in site.blogs %}
+  {% assign ticker_items = ticker_items | push: item %}
+{% endfor %}
+
+{% for item in site.opeds %}
+  {% assign ticker_items = ticker_items | push: item %}
+{% endfor %}
+
+{% for item in site.letters %}
+  {% assign ticker_items = ticker_items | push: item %}
+{% endfor %}
+
+{% for item in site.book_reviews %}
+  {% assign ticker_items = ticker_items | push: item %}
+{% endfor %}
+
+<!-- Step 2: Sort by date descending, take top 5 -->
+{% assign ticker_sorted = ticker_items | sort: "date" | reverse %}
+{% assign ticker_top5 = ticker_sorted | limit: 5 %}
+
+<!-- Step 3: Render the ticker bar -->
+<div class="ticker-bar" style="background-color:#FFFFFF; border-bottom:1px solid #009F93;">
+
+  <!-- Heading label (not part of the scroll) -->
+  <span class="ticker-label" style="color:#009F93; font-weight:600; padding:0 12px; white-space:nowrap;">
+    {% if site.lang == 'ur' %}تازہ ترین{% else %}Latest{% endif %}
+  </span>
+
+  <!-- Pause/resume control for accessibility (WCAG 2.2.2) -->
+  <button class="ticker-pause" onclick="document.querySelector('.ticker-track').classList.toggle('paused')"
+          aria-label="{% if site.lang == 'ur' %}سکرول روکیں یا جاری رکھیں{% else %}Pause or resume scrolling{% endif %}"
+          style="color:#009F93; background:none; border:1px solid #009F93; padding:2px 8px; font-size:0.75rem; margin-right:8px; cursor:pointer; flex-shrink:0;">
+    {% if site.lang == 'ur' %}⏸{% else %}Pause{% endif %}
+  </button>
+
+  <!-- Scrolling track wrapper (overflow hidden) -->
+  <div class="ticker-overflow">
+    <div class="ticker-track">
+
+      <!-- Step 4: Output each item with its collection-type label -->
+      {% for item in ticker_top5 %}
+
+        <!-- Determine collection-type label -->
+        {% assign item_type_en = "" %}
+        {% assign item_type_ur = "" %}
+
+        {% if site.blogs contains item %}
+          {% assign item_type_en = "Blog" %}
+          {% assign item_type_ur = "آراء" %}
+        {% elsif site.opeds contains item %}
+          {% assign item_type_en = "Op-Ed" %}
+          {% assign item_type_ur = "اوپیڈ" %}
+        {% elsif site.letters contains item %}
+          {% assign item_type_en = "Letter" %}
+          {% assign item_type_ur = "خط" %}
+        {% elsif site.book_reviews contains item %}
+          {% assign item_type_en = "Book Review" %}
+          {% assign item_type_ur = "کتابی جائزہ" %}
+        {% endif %}
+
+        <span class="ticker-item" style="color:#00C851;">
+          <a href="{{ item.url }}" style="color:#00C851; text-decoration:none;">
+            [{% if site.lang == 'ur' %}{{ item_type_ur }}{% else %}{{ item_type_en }}{% endif %}]
+            {% if site.lang == 'ur' %}{{ item.title_ur }}{% else %}{{ item.title_en }}{% endif %}
+            &ndash;
+            {{ item.date | date: "%d %B %Y" }}
+          </a>
+          &nbsp;&nbsp;&nbsp;
+        </span>
+
+      {% endfor %}
+
+      <!-- Step 5: Duplicate items so the scroll loops seamlessly -->
+      {% for item in ticker_top5 %}
+        {% assign item_type_en = "" %}
+        {% assign item_type_ur = "" %}
+        {% if site.blogs contains item %}
+          {% assign item_type_en = "Blog" %}
+          {% assign item_type_ur = "آراء" %}
+        {% elsif site.opeds contains item %}
+          {% assign item_type_en = "Op-Ed" %}
+          {% assign item_type_ur = "اوپیڈ" %}
+        {% elsif site.letters contains item %}
+          {% assign item_type_en = "Letter" %}
+          {% assign item_type_ur = "خط" %}
+        {% elsif site.book_reviews contains item %}
+          {% assign item_type_en = "Book Review" %}
+          {% assign item_type_ur = "کتابی جائزہ" %}
+        {% endif %}
+        <span class="ticker-item" style="color:#00C851;" aria-hidden="true">
+          <a href="{{ item.url }}" style="color:#00C851; text-decoration:none;">
+            [{% if site.lang == 'ur' %}{{ item_type_ur }}{% else %}{{ item_type_en }}{% endif %}]
+            {% if site.lang == 'ur' %}{{ item.title_ur }}{% else %}{{ item.title_en }}{% endif %}
+            &ndash;
+            {{ item.date | date: "%d %B %Y" }}
+          </a>
+          &nbsp;&nbsp;&nbsp;
+        </span>
+      {% endfor %}
+
+    </div><!-- /.ticker-track -->
+  </div><!-- /.ticker-overflow -->
+
+</div><!-- /.ticker-bar -->

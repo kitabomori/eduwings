@@ -1,0 +1,8 @@
+lang: en
+direction: ltr
+body_font: "'Inter', sans-serif"
+
+title_display: "EduWings"
+tagline: "Promoting reading through evidence-based research"
+
+destination: ./_site/en

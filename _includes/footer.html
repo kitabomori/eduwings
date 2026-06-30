@@ -1,0 +1,59 @@
+<!-- ============================================================
+     footer.html – site-wide footer
+     Centered, stacked layout: nav links, call-for-pubs/guidelines,
+     social row, privacy policy, copyright.
+     Background: #009F93, Text: #FFFFFF. No icons anywhere.
+     ============================================================ -->
+<footer class="site-footer" style="background-color:#009F93; color:#FFFFFF;">
+  <div class="footer-inner">
+
+    <!-- Row 1: Return to ... main section links -->
+    <p class="footer-row">
+      <span class="footer-label">{% if site.lang == 'ur' %}واپس جائیں:{% else %}Return to:{% endif %}</span>
+      {% for item in site.data.navigation limit:7 %}
+        <a href="{% if site.lang == 'ur' %}{{ item.url_ur }}{% else %}{{ item.url_en }}{% endif %}" style="color:#FFFFFF;">
+          {% if site.lang == 'ur' %}{{ item.name_ur }}{% else %}{{ item.name_en }}{% endif %}
+        </a>{% unless forloop.last %} · {% endunless %}
+      {% endfor %}
+    </p>
+
+    <!-- Row 2: Call for Publications / Guidelines -->
+    <p class="footer-row">
+      {% assign cfp = site.data.navigation | where: "name_en", "Call for Publications" | first %}
+      {% assign guide = site.data.navigation | where: "name_en", "Guidelines" | first %}
+      <a href="{% if site.lang == 'ur' %}{{ cfp.url_ur }}{% else %}{{ cfp.url_en }}{% endif %}" style="color:#FFFFFF;">
+        {% if site.lang == 'ur' %}{{ cfp.name_ur }}{% else %}{{ cfp.name_en }}{% endif %}
+      </a>
+      &nbsp;&nbsp;
+      <a href="{% if site.lang == 'ur' %}{{ guide.url_ur }}{% else %}{{ guide.url_en }}{% endif %}" style="color:#FFFFFF;">
+        {% if site.lang == 'ur' %}{{ guide.name_ur }}{% else %}{{ guide.name_en }}{% endif %}
+      </a>
+    </p>
+
+    <!-- Row 3: Social -->
+    <p class="footer-row">
+      <span class="footer-label">{% if site.lang == 'ur' %}ہمیں فالو کریں:{% else %}Follow us:{% endif %}</span>
+      <a href="#" style="color:#FFFFFF;">YouTube</a> ·
+      <a href="#" style="color:#FFFFFF;">X</a> ·
+      <a href="#" style="color:#FFFFFF;">Instagram</a>
+    </p>
+
+    <!-- Row 4: Privacy Policy -->
+    <p class="footer-row">
+      <a href="{{ site.baseurl }}/{% if site.lang == 'ur' %}ur{% else %}en{% endif %}/privacy/" style="color:#FFFFFF;">
+        {% if site.lang == 'ur' %}رازداری کی پالیسی{% else %}Privacy Policy{% endif %}
+      </a>
+    </p>
+
+    <!-- Row 5: Copyright -->
+    <p class="footer-copy">
+      &copy; {{ 'now' | date: "%Y" }} EduWings.
+      {% if site.lang == 'ur' %}
+        تمام حقوق محفوظ ہیں۔
+      {% else %}
+        All rights reserved. A volunteer educational publishing initiative.
+      {% endif %}
+    </p>
+
+  </div><!-- /.footer-inner -->
+</footer>

@@ -1,0 +1,39 @@
+<!-- ============================================================
+     head.html – <head> block for all pages
+     Sets charset, viewport, Google Fonts, Tailwind CSS, theme script,
+     and all metadata. Called once from base.html.
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Page title: prefer page-specific title, fall back to site title -->
+<title>
+  {% if page.title_en %}
+    {% if site.lang == 'en' %}{{ page.title_en }} – EduWings{% else %}{{ page.title_ur }} – ایڈیوونگز{% endif %}
+  {% else %}
+    EduWings – Promoting reading through evidence-based research
+  {% endif %}
+</title>
+
+<!-- Meta description -->
+<meta name="description" content="{% if site.lang == 'en' %}{{ page.description_en | default: site.tagline }}{% else %}{{ page.description_ur | default: site.tagline }}{% endif %}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{% if site.lang == 'en' %}{{ page.title_en | default: 'EduWings' }}{% else %}{{ page.title_ur | default: 'ایڈیوونگز' }}{% endif %}">
+<meta property="og:description" content="{% if site.lang == 'en' %}{{ page.description_en | default: site.tagline }}{% else %}{{ page.description_ur | default: site.tagline }}{% endif %}">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts: Inter (English) + Noto Nastaliq Urdu (Urdu)
+     Loaded with display=swap for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (compiled by PostCSS build step) -->
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+
+<!-- Theme script: runs before paint to prevent flash of wrong colour scheme -->
+<script src="{{ site.baseurl }}/assets/js/theme.js"></script>
+
+<!-- Favicon -->
+<link rel="icon" href="{{ site.baseurl }}/assets/favicon.svg" type="image/svg+xml">

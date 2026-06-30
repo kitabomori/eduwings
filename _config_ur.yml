@@ -1,0 +1,8 @@
+lang: ur
+direction: rtl
+body_font: "'Noto Nastaliq Urdu', serif"
+
+title_display: "ایڈیوونگز"
+tagline: "تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ"
+
+destination: ./_site/ur

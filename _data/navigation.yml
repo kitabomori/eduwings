@@ -1,0 +1,39 @@
+- name_en: "Home"
+  name_ur: "گھر"
+  url_en: "/eduwings/en/"
+  url_ur: "/eduwings/ur/"
+
+- name_en: "Blogs"
+  name_ur: "بلاگز"
+  url_en: "/eduwings/en/blogs/"
+  url_ur: "/eduwings/ur/blogs/"
+
+- name_en: "Op-Eds"
+  name_ur: "اوپ ایڈ"
+  url_en: "/eduwings/en/opeds/"
+  url_ur: "/eduwings/ur/opeds/"
+
+- name_en: "Letters"
+  name_ur: "خطوط"
+  url_en: "/eduwings/en/letters/"
+  url_ur: "/eduwings/ur/letters/"
+
+- name_en: "Book Reviews"
+  name_ur: "کتابی جائزے"
+  url_en: "/eduwings/en/book-reviews/"
+  url_ur: "/eduwings/ur/book-reviews/"
+
+- name_en: "Reflections"
+  name_ur: "عکاسی"
+  url_en: "/eduwings/en/reflections/"
+  url_ur: "/eduwings/ur/reflections/"
+
+- name_en: "What I Saw"
+  name_ur: "میں نے کیا دیکھا"
+  url_en: "/eduwings/en/main-ne-kya-dekha/"
+  url_ur: "/eduwings/ur/main-ne-kya-dekha/"
+
+- name_en: "Search"
+  name_ur: "تلاش"
+  url_en: "/eduwings/en/search/"
+  url_ur: "/eduwings/ur/search/"

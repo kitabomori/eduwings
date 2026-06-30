@@ -1,0 +1,103 @@
+<!-- ============================================================
+     header.html – site-wide header
+     Contains: logo/site name, navigation, language switcher, dark mode toggle.
+     Background: #009F93 (brand teal). Text: #FFFFFF.
+     No icons anywhere – plain text only.
+     ============================================================ -->
+<header class="site-header" style="background-color:#009F93;">
+  <div class="header-inner">
+
+    <!-- Site name / logo -->
+    <a href="{{ site.baseurl }}/{% if site.lang == 'ur' %}ur{% else %}en{% endif %}/"
+       class="site-title"
+       style="color:#FFFFFF; text-decoration:none;">
+      {% if site.lang == 'ur' %}ایڈیوونگز{% else %}EduWings{% endif %}
+    </a>
+
+    <!-- Mobile nav toggle (plain text, no icon) -->
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation"
+            aria-expanded="false" aria-controls="main-nav"
+            style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:4px 10px; cursor:pointer; font-size:0.85rem;">
+      {% if site.lang == 'ur' %}مینو{% else %}Menu{% endif %}
+    </button>
+
+    <!-- Main navigation -->
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        {% for item in site.data.navigation %}
+        <li>
+          <a href="{% if site.lang == 'ur' %}{{ item.url_ur }}{% else %}{{ item.url_en }}{% endif %}"
+             style="color:#FFFFFF;">
+            {% if site.lang == 'ur' %}{{ item.name_ur }}{% else %}{{ item.name_en }}{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Header controls: language switcher + dark mode toggle -->
+    <div class="header-controls">
+
+      <!-- Language switcher: swaps /en/ <-> /ur/ in the current URL -->
+      <a href="#" onclick="switchLanguage(event)" class="lang-switch"
+         style="color:#FFFFFF; border:1px solid #FFFFFF; padding:3px 10px; text-decoration:none; font-size:0.85rem;">
+        {% if site.lang == 'ur' %}EN{% else %}UR{% endif %}
+      </a>
+
+      <!-- Dark mode toggle: plain text, no icon -->
+      <button onclick="toggleDark()" id="theme-btn"
+              style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:3px 10px; cursor:pointer; font-size:0.85rem; margin-{% if site.lang == 'ur' %}right{% else %}left{% endif %}:6px;">
+        {% if site.lang == 'ur' %}تاریک{% else %}Dark{% endif %}
+      </button>
+
+    </div><!-- /.header-controls -->
+  </div><!-- /.header-inner -->
+</header>
+
+<script>
+  /* --------------------------------------------------------
+     switchLanguage()
+     Swaps /en/ and /ur/ in the current path, then navigates.
+     Falls back to the opposite home page if swap fails.
+  -------------------------------------------------------- */
+  function switchLanguage(e) {
+    e.preventDefault();
+    var path = window.location.pathname;
+    var newPath;
+    if (path.includes('/en/')) {
+      newPath = path.replace('/en/', '/ur/');
+    } else if (path.includes('/ur/')) {
+      newPath = path.replace('/ur/', '/en/');
+    } else {
+      // Fallback: go to opposite home
+      newPath = path.includes('/ur') ? '{{ site.baseurl }}/en/' : '{{ site.baseurl }}/ur/';
+    }
+    window.location.href = newPath;
+  }
+
+  /* --------------------------------------------------------
+     toggleNav()
+     Shows/hides the mobile navigation menu.
+  -------------------------------------------------------- */
+  function toggleNav() {
+    var nav = document.getElementById('main-nav');
+    var btn = document.querySelector('.nav-toggle');
+    var isOpen = nav.classList.toggle('open');
+    if (btn) { btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+  }
+
+  /* --------------------------------------------------------
+     Update dark mode button label after theme.js runs.
+  -------------------------------------------------------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('theme-btn');
+    if (btn) {
+      var isDark = document.documentElement.classList.contains('dark');
+      {% if site.lang == 'ur' %}
+        btn.textContent = isDark ? 'روشن' : 'تاریک';
+      {% else %}
+        btn.textContent = isDark ? 'Light' : 'Dark';
+      {% endif %}
+    }
+  });
+</script>

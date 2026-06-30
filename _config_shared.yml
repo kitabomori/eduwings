@@ -1,0 +1,74 @@
+title: EduWings
+email: kitabomori@gmail.com
+baseurl: "/eduwings"
+url: "https://edu-wings.github.io"
+collections_dir: _collections
+
+plugins:
+  - jekyll-sitemap
+
+# Collections – shared across both languages
+collections:
+  blogs:
+    output: true
+    permalink: /:collection/:name/
+  opeds:
+    output: true
+    permalink: /:collection/:name/
+  letters:
+    output: true
+    permalink: /:collection/:name/
+  book_reviews:
+    output: true
+    permalink: /book-reviews/:name/
+  reflections:
+    output: true
+    permalink: /:collection/:name/
+  calls:
+    output: true
+    permalink: /:collection/:name/
+
+# Default layouts
+defaults:
+  - scope:
+      path: ""
+      type: blogs
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: opeds
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: letters
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: book_reviews
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: reflections
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: calls
+    values:
+      layout: post
+
+markdown: kramdown
+highlighter: rouge
+exclude:
+  - index.html
+  - README.md
+  - Gemfile
+  - package.json
+  - package-lock.json
+  - node_modules
+  - tailwind.config.js
+  - postcss.config.js
