@@ -13,17 +13,17 @@
       var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
       // Redirect to Urdu build for Urdu/Pakistani Urdu locales
       if (lang.startsWith('ur')) {
-        window.location.replace('/eduwings/ur/');
+        window.location.replace('/ur/');
       } else {
-        window.location.replace('/eduwings/en/');
+        window.location.replace('/en/');
       }
     })();
   </script>
   <noscript>
-    <meta http-equiv="refresh" content="0; url=/eduwings/en/">
+    <meta http-equiv="refresh" content="0; url=/en/">
   </noscript>
 </head>
 <body>
-  <p>Redirecting… <a href="/eduwings/en/">Click here if not redirected.</a></p>
+  <p>Redirecting… <a href="/en/">Click here if not redirected.</a></p>
 </body>
 </html>

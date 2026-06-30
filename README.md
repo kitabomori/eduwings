@@ -5,7 +5,7 @@
 
 A bilingual (English/Urdu) educational publishing website built with Jekyll, Tailwind CSS, and vanilla JavaScript. Deployed to GitHub Pages at:
 
-**https://edu-wings.github.io/eduwings/**
+**https://kitabomori.github.io/**
 
 ---
 
@@ -48,8 +48,8 @@ EduWings publishes six types of content:
 ### Clone and install
 
 ```bash
-git clone https://github.com/edu-wings/eduwings.git
-cd eduwings
+git clone https://github.com/kitabomori/kitabomori.github.io.git
+cd kitabomori.github.io
 gem install jekyll bundler
 bundle install
 npm install
@@ -107,7 +107,7 @@ If you only have English content, you can write it without the Liquid tags — j
 ### Step 4 – Save and push
 
 If using the GitHub website:
-1. Go to your repository at `https://github.com/edu-wings/eduwings`
+1. Go to your repository at `https://github.com/kitabomori/kitabomori.github.io`
 2. Navigate to the correct folder (e.g. `_collections/_letters/`)
 3. Click **Add file → Create new file**
 4. Paste your content
@@ -153,7 +153,7 @@ Deployment is automatic. Every time you push to the `main` branch, GitHub Action
 
 You do not need to do anything else.
 
-**First deployment:** Go to your repository Settings → Pages → Source, and select `gh-pages` branch, root folder. Save. The site will be live at `https://edu-wings.github.io/eduwings/`.
+**First deployment:** Go to your repository Settings → Pages → Source, and select `gh-pages` branch, root folder. Save. The site will be live at `https://kitabomori.github.io/`.
 
 ---
 
@@ -204,7 +204,7 @@ Remove the `<!--` and `-->` comment markers, then replace `YOUR_GOOGLE_FORM_EMBE
 ## File structure overview
 
 ```
-eduwings/
+kitabomori.github.io/
 ├── .github/workflows/deploy.yml   ← GitHub Actions: builds and deploys
 ├── _config_shared.yml             ← Collections and settings shared by both languages
 ├── _config_en.yml                 ← English-specific config (lang, font, direction)

@@ -1,7 +1,7 @@
 title: EduWings
 email: kitabomori@gmail.com
-baseurl: "/eduwings"
-url: "https://edu-wings.github.io"
+baseurl: ""
+url: "https://kitabomori.github.io"
 collections_dir: _collections
 
 plugins:

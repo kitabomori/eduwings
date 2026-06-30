@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://edu-wings.github.io/eduwings/en/sitemap.xml
-Sitemap: https://edu-wings.github.io/eduwings/ur/sitemap.xml
+Sitemap: https://kitabomori.github.io/en/sitemap.xml
+Sitemap: https://kitabomori.github.io/ur/sitemap.xml
