@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     base.html – root layout for all pages.
+     Sets html lang/dir, loads head, header, footer, and
+     applies body font from site config.
+     ============================================================ -->
+<html lang="en"
+      dir="ltr"
+      class="">
+<head>
+  <!-- ============================================================
+     head.html – <head> block for all pages
+     Sets charset, viewport, Google Fonts, Tailwind CSS, theme script,
+     and all metadata. Called once from base.html.
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Page title: prefer page-specific title, fall back to site title -->
+<title>
+  
+    Submission Guidelines – EduWings
+  
+</title>
+
+<!-- Meta description -->
+<meta name="description" content="How to submit your blog, op-ed, book review, or letter to EduWings.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Submission Guidelines">
+<meta property="og:description" content="How to submit your blog, op-ed, book review, or letter to EduWings.">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts: Inter (English) + Noto Nastaliq Urdu (Urdu)
+     Loaded with display=swap for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (compiled by PostCSS build step) -->
+<link rel="stylesheet" href="/eduwings/assets/css/main.css">
+
+<!-- Theme script: runs before paint to prevent flash of wrong colour scheme -->
+<script src="/eduwings/assets/js/theme.js"></script>
+
+<!-- Favicon -->
+<link rel="icon" href="/eduwings/assets/favicon.svg" type="image/svg+xml">
+
+</head>
+<body style="font-family: 'Inter', sans-serif;">
+
+  <!-- ============================================================
+     header.html – site-wide header
+     Contains: logo/site name, navigation, language switcher, dark mode toggle.
+     Background: #009F93 (brand teal). Text: #FFFFFF.
+     No icons anywhere – plain text only.
+     ============================================================ -->
+<header class="site-header" style="background-color:#009F93;">
+  <div class="header-inner">
+
+    <!-- Site name / logo -->
+    <a href="/eduwings/en/"
+       class="site-title"
+       style="color:#FFFFFF; text-decoration:none;">
+      EduWings
+    </a>
+
+    <!-- Mobile nav toggle (plain text, no icon) -->
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation"
+            aria-expanded="false" aria-controls="main-nav"
+            style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:4px 10px; cursor:pointer; font-size:0.85rem;">
+      Menu
+    </button>
+
+    <!-- Main navigation -->
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        
+        <li>
+          <a href="/eduwings/en/"
+             style="color:#FFFFFF;">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/blogs/"
+             style="color:#FFFFFF;">
+            Blogs
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/opeds/"
+             style="color:#FFFFFF;">
+            Op-Eds
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/letters/"
+             style="color:#FFFFFF;">
+            Letters
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/book-reviews/"
+             style="color:#FFFFFF;">
+            Book Reviews
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/reflections/"
+             style="color:#FFFFFF;">
+            Reflections
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/main-ne-kya-dekha/"
+             style="color:#FFFFFF;">
+            What I Saw
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/search/"
+             style="color:#FFFFFF;">
+            Search
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <!-- Header controls: language switcher + dark mode toggle -->
+    <div class="header-controls">
+
+      <!-- Language switcher: swaps /en/ <-> /ur/ in the current URL -->
+      <a href="#" onclick="switchLanguage(event)" class="lang-switch"
+         style="color:#FFFFFF; border:1px solid #FFFFFF; padding:3px 10px; text-decoration:none; font-size:0.85rem;">
+        UR
+      </a>
+
+      <!-- Dark mode toggle: plain text, no icon -->
+      <button onclick="toggleDark()" id="theme-btn"
+              style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:3px 10px; cursor:pointer; font-size:0.85rem; margin-left:6px;">
+        Dark
+      </button>
+
+    </div><!-- /.header-controls -->
+  </div><!-- /.header-inner -->
+</header>
+
+<script>
+  /* --------------------------------------------------------
+     switchLanguage()
+     Swaps /en/ and /ur/ in the current path, then navigates.
+     Falls back to the opposite home page if swap fails.
+  -------------------------------------------------------- */
+  function switchLanguage(e) {
+    e.preventDefault();
+    var path = window.location.pathname;
+    var newPath;
+    if (path.includes('/en/')) {
+      newPath = path.replace('/en/', '/ur/');
+    } else if (path.includes('/ur/')) {
+      newPath = path.replace('/ur/', '/en/');
+    } else {
+      // Fallback: go to opposite home
+      newPath = path.includes('/ur') ? '/eduwings/en/' : '/eduwings/ur/';
+    }
+    window.location.href = newPath;
+  }
+
+  /* --------------------------------------------------------
+     toggleNav()
+     Shows/hides the mobile navigation menu.
+  -------------------------------------------------------- */
+  function toggleNav() {
+    var nav = document.getElementById('main-nav');
+    var btn = document.querySelector('.nav-toggle');
+    var isOpen = nav.classList.toggle('open');
+    if (btn) { btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+  }
+
+  /* --------------------------------------------------------
+     Update dark mode button label after theme.js runs.
+  -------------------------------------------------------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('theme-btn');
+    if (btn) {
+      var isDark = document.documentElement.classList.contains('dark');
+      
+        btn.textContent = isDark ? 'Light' : 'Dark';
+      
+    }
+  });
+</script>
+
+
+  <main id="main-content">
+    <!-- ============================================================
+     page.html – layout for standard content pages.
+     Wraps content in a centred container with page-title heading.
+     ============================================================ -->
+<div class="page-container">
+
+  <h1 class="page-title">
+    
+      Submission Guidelines
+    
+  </h1>
+
+  <div class="page-content">
+    
+<h2 id="submission-guidelines">Submission Guidelines</h2>
+
+<p>Welcome to EduWings. Below you will find complete guidelines for each type of contribution we publish.</p>
+
+<hr />
+
+<h3 id="section-a-blogs-bera-blog-style">Section A: Blogs (BERA Blog Style)</h3>
+
+<p><strong>Length:</strong> 500–750 words, including any references.</p>
+
+<p><strong>Purpose:</strong> A research-informed, accessible piece on an educational issue — written for a broad readership rather than an academic one. Based on the British Educational Research Association’s (BERA) own blog guidance, a strong submission should:</p>
+<ul>
+  <li>write for an international audience, without assuming readers know any one country’s specific education system</li>
+  <li>keep references to the minimum needed to support the argument, proportional to the length of the piece</li>
+  <li>link to sources directly in the text rather than listing a separate bibliography; where formal citations are unavoidable, follow APA 7th edition style</li>
+  <li>avoid linking to material that is profane, obscene, or that knowingly infringes intellectual property</li>
+</ul>
+
+<p><strong>Process:</strong></p>
+<ol>
+  <li>Send the full draft by email, along with a short author bio and (if available) a headshot photo.</li>
+  <li>If your piece is based on a published research article, news story, or event, mention this when you submit so we can link to it.</li>
+  <li>Disclose clearly if you used any generative AI tool while drafting, and what it was used for. You remain responsible for checking that any facts, data, or references the AI produced are accurate.</li>
+  <li>You will receive a response within two weeks.</li>
+</ol>
+
+<p><strong>Source:</strong> Guidance adapted from the <a href="https://www.bera.ac.uk/blog/submission-policy">BERA Blog submission policy</a>.</p>
+
+<hr />
+
+<h3 id="section-b-op-eds-education-week-style">Section B: Op-Eds (Education Week Style)</h3>
+
+<p><strong>Length:</strong> 700–1,000 words</p>
+
+<p><strong>Purpose:</strong> Opinion grounded in professional experience or research, with concrete and actionable recommendations for educators, policymakers, or institutions. The tone should be authoritative but accessible: write as a knowledgeable practitioner, not as an academic writing for a journal.</p>
+
+<p><strong>Process:</strong></p>
+<ol>
+  <li>Submit the full draft via the Contact form on this site.</li>
+  <li>You will receive a response within three weeks.</li>
+</ol>
+
+<p><strong>Reference style:</strong> <a href="https://www.edweek.org/opinion">Education Week Opinion</a></p>
+
+<hr />
+
+<h3 id="section-c-book-reviews">Section C: Book Reviews</h3>
+
+<p><strong>Length:</strong> 500–800 words</p>
+
+<p><strong>Structure:</strong></p>
+<ul>
+  <li>At the top: book title, author, publisher, year of publication</li>
+  <li>A brief summary of the book’s main argument or content</li>
+  <li>Strengths: what the book does well</li>
+  <li>Weaknesses or limitations</li>
+  <li>Relevance to reading, literacy, or education</li>
+  <li>A final recommendation (who should read it and why)</li>
+</ul>
+
+<p><strong>Process:</strong></p>
+<ol>
+  <li>Pitch the book title first by email before writing the review.</li>
+  <li>If accepted, submit the full review within four weeks.</li>
+  <li>Reviews will be edited for clarity.</li>
+</ol>
+
+<p><strong>Reference style:</strong> London Review of Books, academic book reviews</p>
+
+<hr />
+
+<h3 id="common-guidelines-all-contributions">Common Guidelines (All Contributions)</h3>
+
+<ul>
+  <li>We accept only original, previously unpublished work.</li>
+  <li>At present, EduWings publishes in English only. Urdu translations may be requested after acceptance.</li>
+  <li>Include a short author bio of 2–3 sentences at the end of your submission.</li>
+  <li>We do not accept simultaneous submissions: please do not submit the same piece to another publication while it is under consideration here.</li>
+  <li>EduWings reserves the right to decline any submission without explanation.</li>
+  <li>No payment is offered. EduWings is a volunteer educational initiative.</li>
+</ul>
+
+<hr />
+
+<p><strong>To submit:</strong> Use the <a href="/eduwings/en/contact/">Contact page</a> or email <a href="mailto:kitabomori@gmail.com">kitabomori@gmail.com</a>.</p>
+
+
+  </div>
+
+</div>
+
+  </main>
+
+  <!-- ============================================================
+     footer.html – site-wide footer
+     Centered, stacked layout: nav links, call-for-pubs/guidelines,
+     social row, privacy policy, copyright.
+     Background: #009F93, Text: #FFFFFF. No icons anywhere.
+     ============================================================ -->
+<footer class="site-footer" style="background-color:#009F93; color:#FFFFFF;">
+  <div class="footer-inner">
+
+    <!-- Row 1: Return to ... main section links -->
+    <p class="footer-row">
+      <span class="footer-label">Return to:</span>
+      
+        <a href="/eduwings/en/" style="color:#FFFFFF;">
+          Home
+        </a> · 
+      
+        <a href="/eduwings/en/blogs/" style="color:#FFFFFF;">
+          Blogs
+        </a> · 
+      
+        <a href="/eduwings/en/opeds/" style="color:#FFFFFF;">
+          Op-Eds
+        </a> · 
+      
+        <a href="/eduwings/en/letters/" style="color:#FFFFFF;">
+          Letters
+        </a> · 
+      
+        <a href="/eduwings/en/book-reviews/" style="color:#FFFFFF;">
+          Book Reviews
+        </a> · 
+      
+        <a href="/eduwings/en/reflections/" style="color:#FFFFFF;">
+          Reflections
+        </a> · 
+      
+        <a href="/eduwings/en/main-ne-kya-dekha/" style="color:#FFFFFF;">
+          What I Saw
+        </a>
+      
+    </p>
+
+    <!-- Row 2: Call for Publications / Guidelines -->
+    <p class="footer-row">
+      
+      
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+      &nbsp;&nbsp;
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+    </p>
+
+    <!-- Row 3: Social -->
+    <p class="footer-row">
+      <span class="footer-label">Follow us:</span>
+      <a href="#" style="color:#FFFFFF;">YouTube</a> ·
+      <a href="#" style="color:#FFFFFF;">X</a> ·
+      <a href="#" style="color:#FFFFFF;">Instagram</a>
+    </p>
+
+    <!-- Row 4: Privacy Policy -->
+    <p class="footer-row">
+      <a href="/eduwings/en/privacy/" style="color:#FFFFFF;">
+        Privacy Policy
+      </a>
+    </p>
+
+    <!-- Row 5: Copyright -->
+    <p class="footer-copy">
+      &copy; 2026 EduWings.
+      
+        All rights reserved. A volunteer educational publishing initiative.
+      
+    </p>
+
+  </div><!-- /.footer-inner -->
+</footer>
+
+
+</body>
+</html>

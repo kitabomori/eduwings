@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     base.html – root layout for all pages.
+     Sets html lang/dir, loads head, header, footer, and
+     applies body font from site config.
+     ============================================================ -->
+<html lang="ur"
+      dir="rtl"
+      class="">
+<head>
+  <!-- ============================================================
+     head.html – <head> block for all pages
+     Sets charset, viewport, Google Fonts, Tailwind CSS, theme script,
+     and all metadata. Called once from base.html.
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Page title: prefer page-specific title, fall back to site title -->
+<title>
+  
+     – ایڈیوونگز
+  
+</title>
+
+<!-- Meta description -->
+<meta name="description" content="تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ایڈیوونگز">
+<meta property="og:description" content="تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts: Inter (English) + Noto Nastaliq Urdu (Urdu)
+     Loaded with display=swap for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (compiled by PostCSS build step) -->
+<link rel="stylesheet" href="/eduwings/assets/css/main.css">
+
+<!-- Theme script: runs before paint to prevent flash of wrong colour scheme -->
+<script src="/eduwings/assets/js/theme.js"></script>
+
+<!-- Favicon -->
+<link rel="icon" href="/eduwings/assets/favicon.svg" type="image/svg+xml">
+
+</head>
+<body style="font-family: 'Noto Nastaliq Urdu', serif;">
+
+  <!-- ============================================================
+     header.html – site-wide header
+     Contains: logo/site name, navigation, language switcher, dark mode toggle.
+     Background: #009F93 (brand teal). Text: #FFFFFF.
+     No icons anywhere – plain text only.
+     ============================================================ -->
+<header class="site-header" style="background-color:#009F93;">
+  <div class="header-inner">
+
+    <!-- Site name / logo -->
+    <a href="/eduwings/ur/"
+       class="site-title"
+       style="color:#FFFFFF; text-decoration:none;">
+      ایڈیوونگز
+    </a>
+
+    <!-- Mobile nav toggle (plain text, no icon) -->
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation"
+            aria-expanded="false" aria-controls="main-nav"
+            style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:4px 10px; cursor:pointer; font-size:0.85rem;">
+      مینو
+    </button>
+
+    <!-- Main navigation -->
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        
+        <li>
+          <a href="/eduwings/ur/"
+             style="color:#FFFFFF;">
+            گھر
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/blogs/"
+             style="color:#FFFFFF;">
+            بلاگز
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/opeds/"
+             style="color:#FFFFFF;">
+            اوپ ایڈ
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/letters/"
+             style="color:#FFFFFF;">
+            خطوط
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/book-reviews/"
+             style="color:#FFFFFF;">
+            کتابی جائزے
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/reflections/"
+             style="color:#FFFFFF;">
+            عکاسی
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/main-ne-kya-dekha/"
+             style="color:#FFFFFF;">
+            میں نے کیا دیکھا
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/search/"
+             style="color:#FFFFFF;">
+            تلاش
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <!-- Header controls: language switcher + dark mode toggle -->
+    <div class="header-controls">
+
+      <!-- Language switcher: swaps /en/ <-> /ur/ in the current URL -->
+      <a href="#" onclick="switchLanguage(event)" class="lang-switch"
+         style="color:#FFFFFF; border:1px solid #FFFFFF; padding:3px 10px; text-decoration:none; font-size:0.85rem;">
+        EN
+      </a>
+
+      <!-- Dark mode toggle: plain text, no icon -->
+      <button onclick="toggleDark()" id="theme-btn"
+              style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:3px 10px; cursor:pointer; font-size:0.85rem; margin-right:6px;">
+        تاریک
+      </button>
+
+    </div><!-- /.header-controls -->
+  </div><!-- /.header-inner -->
+</header>
+
+<script>
+  /* --------------------------------------------------------
+     switchLanguage()
+     Swaps /en/ and /ur/ in the current path, then navigates.
+     Falls back to the opposite home page if swap fails.
+  -------------------------------------------------------- */
+  function switchLanguage(e) {
+    e.preventDefault();
+    var path = window.location.pathname;
+    var newPath;
+    if (path.includes('/en/')) {
+      newPath = path.replace('/en/', '/ur/');
+    } else if (path.includes('/ur/')) {
+      newPath = path.replace('/ur/', '/en/');
+    } else {
+      // Fallback: go to opposite home
+      newPath = path.includes('/ur') ? '/eduwings/en/' : '/eduwings/ur/';
+    }
+    window.location.href = newPath;
+  }
+
+  /* --------------------------------------------------------
+     toggleNav()
+     Shows/hides the mobile navigation menu.
+  -------------------------------------------------------- */
+  function toggleNav() {
+    var nav = document.getElementById('main-nav');
+    var btn = document.querySelector('.nav-toggle');
+    var isOpen = nav.classList.toggle('open');
+    if (btn) { btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+  }
+
+  /* --------------------------------------------------------
+     Update dark mode button label after theme.js runs.
+  -------------------------------------------------------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('theme-btn');
+    if (btn) {
+      var isDark = document.documentElement.classList.contains('dark');
+      
+        btn.textContent = isDark ? 'روشن' : 'تاریک';
+      
+    }
+  });
+</script>
+
+
+  <main id="main-content">
+    <!-- ============================================================
+     post.html – layout for collection items (blogs, letters, etc.)
+     Shows title, date, description, and body content.
+     ============================================================ -->
+<article class="post-container">
+
+  <header class="post-header">
+    <h1 class="post-title">
+      
+        The Catcher In The Rye
+      
+    </h1>
+
+    <p class="post-date">
+      30 June 2026
+    </p>
+
+    
+    <p class="post-description">
+      
+        
+      
+    </p>
+    
+  </header>
+
+  <div class="post-body">
+    <table>
+  <tbody>
+    <tr>
+      <td><strong>Title:</strong> The Catcher in the Rye</td>
+      <td><strong>Author:</strong> J. D. Salinger</td>
+      <td><strong>Publisher:</strong> Little, Brown and Company</td>
+      <td><strong>Year:</strong> 1951</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Published in 1951, The Catcher in the Rye remains one of the most influential and controversial novels in modern American literature. Written by J. D. Salinger, the novel follows sixteen-year-old Holden Caulfield as he wanders through New York City after being expelled from school. More than a coming-of-age story, the novel is a profound exploration of adolescence, identity, loneliness, and the struggle to preserve innocence in an increasingly complex world.</p>
+
+<p>The story unfolds over a few days as Holden leaves his boarding school and avoids returning home. During his journey, he encounters former classmates, strangers, nuns, and family members, each interaction revealing his deep dissatisfaction with what he calls the “phoniness” of the adult world. Beneath Holden’s sarcastic humor and rebellious attitude lies a young man grappling with grief, isolation, and emotional vulnerability following the death of his younger brother, Allie.</p>
+
+<p>One of the novel’s greatest strengths is its distinctive narrative voice. Holden speaks directly to the reader in a conversational, candid style that makes him feel remarkably authentic. His observations are often witty, contradictory, and emotionally charged, reflecting the confusion and insecurity of adolescence. Although he can be judgmental and unreliable, his honesty about his fears and disappointments makes him a sympathetic and memorable protagonist.</p>
+
+<p>Salinger’s exploration of mental health and emotional trauma was ahead of its time. Rather than presenting Holden as simply rebellious, the novel portrays the psychological struggles that often accompany loss, anxiety, and the transition into adulthood. The title itself symbolizes Holden’s desire to protect children from losing their innocence, revealing his longing to preserve a world untouched by hypocrisy and disappointment.</p>
+
+<p>The novel’s themes remain relevant today. Young readers continue to identify with feelings of alienation, uncertainty, and the search for purpose. At the same time, older readers often gain a deeper appreciation for Holden’s emotional complexity and the subtle commentary on family, society, and personal growth. The book encourages readers to look beyond outward behavior and consider the emotional burdens that individuals may carry.</p>
+
+<p>Despite its literary acclaim, <em>The Catcher in the Rye</em> has been controversial because of its language, mature themes, and criticism of social conventions. These elements have led to challenges and bans in some schools and libraries. Nevertheless, many educators and literary critics argue that these very qualities contribute to the novel’s realism and enduring significance.</p>
+
+<p>Overall, <em>The Catcher in the Rye</em> is a compelling and thought-provoking novel that captures the uncertainty of growing up with remarkable honesty. Its memorable protagonist, powerful themes, and timeless exploration of identity continue to resonate with readers across generations. Whether read as a coming-of-age story or a psychological portrait, the novel remains an essential work of modern literature and deserves its place among the classics.</p>
+
+  </div>
+
+  <!-- Back link -->
+  <p class="post-back">
+    <button onclick="history.back()" class="post-back-btn">
+      ← واپس جائیں
+    </button>
+  </p>
+
+</article>
+
+  </main>
+
+  <!-- ============================================================
+     footer.html – site-wide footer
+     Centered, stacked layout: nav links, call-for-pubs/guidelines,
+     social row, privacy policy, copyright.
+     Background: #009F93, Text: #FFFFFF. No icons anywhere.
+     ============================================================ -->
+<footer class="site-footer" style="background-color:#009F93; color:#FFFFFF;">
+  <div class="footer-inner">
+
+    <!-- Row 1: Return to ... main section links -->
+    <p class="footer-row">
+      <span class="footer-label">واپس جائیں:</span>
+      
+        <a href="/eduwings/ur/" style="color:#FFFFFF;">
+          گھر
+        </a> · 
+      
+        <a href="/eduwings/ur/blogs/" style="color:#FFFFFF;">
+          بلاگز
+        </a> · 
+      
+        <a href="/eduwings/ur/opeds/" style="color:#FFFFFF;">
+          اوپ ایڈ
+        </a> · 
+      
+        <a href="/eduwings/ur/letters/" style="color:#FFFFFF;">
+          خطوط
+        </a> · 
+      
+        <a href="/eduwings/ur/book-reviews/" style="color:#FFFFFF;">
+          کتابی جائزے
+        </a> · 
+      
+        <a href="/eduwings/ur/reflections/" style="color:#FFFFFF;">
+          عکاسی
+        </a> · 
+      
+        <a href="/eduwings/ur/main-ne-kya-dekha/" style="color:#FFFFFF;">
+          میں نے کیا دیکھا
+        </a>
+      
+    </p>
+
+    <!-- Row 2: Call for Publications / Guidelines -->
+    <p class="footer-row">
+      
+      
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+      &nbsp;&nbsp;
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+    </p>
+
+    <!-- Row 3: Social -->
+    <p class="footer-row">
+      <span class="footer-label">ہمیں فالو کریں:</span>
+      <a href="#" style="color:#FFFFFF;">YouTube</a> ·
+      <a href="#" style="color:#FFFFFF;">X</a> ·
+      <a href="#" style="color:#FFFFFF;">Instagram</a>
+    </p>
+
+    <!-- Row 4: Privacy Policy -->
+    <p class="footer-row">
+      <a href="/eduwings/ur/privacy/" style="color:#FFFFFF;">
+        رازداری کی پالیسی
+      </a>
+    </p>
+
+    <!-- Row 5: Copyright -->
+    <p class="footer-copy">
+      &copy; 2026 EduWings.
+      
+        تمام حقوق محفوظ ہیں۔
+      
+    </p>
+
+  </div><!-- /.footer-inner -->
+</footer>
+
+
+</body>
+</html>

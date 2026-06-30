@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     base.html – root layout for all pages.
+     Sets html lang/dir, loads head, header, footer, and
+     applies body font from site config.
+     ============================================================ -->
+<html lang="ur"
+      dir="rtl"
+      class="">
+<head>
+  <!-- ============================================================
+     head.html – <head> block for all pages
+     Sets charset, viewport, Google Fonts, Tailwind CSS, theme script,
+     and all metadata. Called once from base.html.
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Page title: prefer page-specific title, fall back to site title -->
+<title>
+  
+    محترمہ ٹیچر کے نام ایک خط – ایڈیوونگز
+  
+</title>
+
+<!-- Meta description -->
+<meta name="description" content="تعلیم، تبدیلی، اور آواز اٹھانے کی ہمت پر ایک ذاتی خط۔">
+
+<!-- Open Graph -->
+<meta property="og:title" content="محترمہ ٹیچر کے نام ایک خط">
+<meta property="og:description" content="تعلیم، تبدیلی، اور آواز اٹھانے کی ہمت پر ایک ذاتی خط۔">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts: Inter (English) + Noto Nastaliq Urdu (Urdu)
+     Loaded with display=swap for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (compiled by PostCSS build step) -->
+<link rel="stylesheet" href="/eduwings/assets/css/main.css">
+
+<!-- Theme script: runs before paint to prevent flash of wrong colour scheme -->
+<script src="/eduwings/assets/js/theme.js"></script>
+
+<!-- Favicon -->
+<link rel="icon" href="/eduwings/assets/favicon.svg" type="image/svg+xml">
+
+</head>
+<body style="font-family: 'Noto Nastaliq Urdu', serif;">
+
+  <!-- ============================================================
+     header.html – site-wide header
+     Contains: logo/site name, navigation, language switcher, dark mode toggle.
+     Background: #009F93 (brand teal). Text: #FFFFFF.
+     No icons anywhere – plain text only.
+     ============================================================ -->
+<header class="site-header" style="background-color:#009F93;">
+  <div class="header-inner">
+
+    <!-- Site name / logo -->
+    <a href="/eduwings/ur/"
+       class="site-title"
+       style="color:#FFFFFF; text-decoration:none;">
+      ایڈیوونگز
+    </a>
+
+    <!-- Mobile nav toggle (plain text, no icon) -->
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation"
+            aria-expanded="false" aria-controls="main-nav"
+            style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:4px 10px; cursor:pointer; font-size:0.85rem;">
+      مینو
+    </button>
+
+    <!-- Main navigation -->
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        
+        <li>
+          <a href="/eduwings/ur/"
+             style="color:#FFFFFF;">
+            گھر
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/blogs/"
+             style="color:#FFFFFF;">
+            بلاگز
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/opeds/"
+             style="color:#FFFFFF;">
+            اوپ ایڈ
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/letters/"
+             style="color:#FFFFFF;">
+            خطوط
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/book-reviews/"
+             style="color:#FFFFFF;">
+            کتابی جائزے
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/reflections/"
+             style="color:#FFFFFF;">
+            عکاسی
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/main-ne-kya-dekha/"
+             style="color:#FFFFFF;">
+            میں نے کیا دیکھا
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/search/"
+             style="color:#FFFFFF;">
+            تلاش
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <!-- Header controls: language switcher + dark mode toggle -->
+    <div class="header-controls">
+
+      <!-- Language switcher: swaps /en/ <-> /ur/ in the current URL -->
+      <a href="#" onclick="switchLanguage(event)" class="lang-switch"
+         style="color:#FFFFFF; border:1px solid #FFFFFF; padding:3px 10px; text-decoration:none; font-size:0.85rem;">
+        EN
+      </a>
+
+      <!-- Dark mode toggle: plain text, no icon -->
+      <button onclick="toggleDark()" id="theme-btn"
+              style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:3px 10px; cursor:pointer; font-size:0.85rem; margin-right:6px;">
+        تاریک
+      </button>
+
+    </div><!-- /.header-controls -->
+  </div><!-- /.header-inner -->
+</header>
+
+<script>
+  /* --------------------------------------------------------
+     switchLanguage()
+     Swaps /en/ and /ur/ in the current path, then navigates.
+     Falls back to the opposite home page if swap fails.
+  -------------------------------------------------------- */
+  function switchLanguage(e) {
+    e.preventDefault();
+    var path = window.location.pathname;
+    var newPath;
+    if (path.includes('/en/')) {
+      newPath = path.replace('/en/', '/ur/');
+    } else if (path.includes('/ur/')) {
+      newPath = path.replace('/ur/', '/en/');
+    } else {
+      // Fallback: go to opposite home
+      newPath = path.includes('/ur') ? '/eduwings/en/' : '/eduwings/ur/';
+    }
+    window.location.href = newPath;
+  }
+
+  /* --------------------------------------------------------
+     toggleNav()
+     Shows/hides the mobile navigation menu.
+  -------------------------------------------------------- */
+  function toggleNav() {
+    var nav = document.getElementById('main-nav');
+    var btn = document.querySelector('.nav-toggle');
+    var isOpen = nav.classList.toggle('open');
+    if (btn) { btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+  }
+
+  /* --------------------------------------------------------
+     Update dark mode button label after theme.js runs.
+  -------------------------------------------------------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('theme-btn');
+    if (btn) {
+      var isDark = document.documentElement.classList.contains('dark');
+      
+        btn.textContent = isDark ? 'روشن' : 'تاریک';
+      
+    }
+  });
+</script>
+
+
+  <main id="main-content">
+    <!-- ============================================================
+     post.html – layout for collection items (blogs, letters, etc.)
+     Shows title, date, description, and body content.
+     ============================================================ -->
+<article class="post-container">
+
+  <header class="post-header">
+    <h1 class="post-title">
+      
+        محترمہ ٹیچر کے نام ایک خط
+      
+    </h1>
+
+    <p class="post-date">
+      24 June 2026
+    </p>
+
+    
+    <p class="post-description">
+      
+        تعلیم، تبدیلی، اور آواز اٹھانے کی ہمت پر ایک ذاتی خط۔
+      
+    </p>
+    
+  </header>
+
+  <div class="post-body">
+    
+<p>۲۴ جون ۲۰۲۶
+محترمہ ٹیچر ،
+مجھے لگتا ہے کہ میری انگریزی بہت خراب ہے، جب بھی میں اس نوعیت کی کوئی ای میل لکھتا ہوں تو آخر میں وہ ای میل مجھ پر ہی بھاری پڑتی ہے اس لیے سوچا کہ یہ خط اردو میں لکھوں۔</p>
+
+<p>امید ہے کہ آپ کی طبیعت ہمیشہ کی طرح ٹھیک ہو گی اور اس خط کو ایک نشست میں پڑھنے کی کوشش کریں گی۔ سکول آف ایجوکیشن (SOE) میں میری ڈگری مکمل ہوئی اور مجھے لگتا ہے آپ سے سکول کے باہر بات کرنے کا موقعہ کم ہی ملا۔ آخری ملاقات اس وقت ہوئی جب ڈاکٹر شاہد صدیقی کسی وجہ سے لمز آئے تھے۔ اس ملاقات میں آپ نے کہا تھا “میں بار بار کہتی ہوں تبدیلی آہستہ آتی ہے، دیکھو آپ میں سے کتنے ہیں جو اپنے علاقے میں جائیں گے اور وہاں چیزیں ٹھیک کرنے کی کوشش کریں گے۔” اس بات سے مجھے اطمینان ہوا کہ میں بھی کچھ کر سکتا ہوں، پھر ڈاکٹر صدیقی کی کتاب آدھے ادھورے خواب کی بات ہوئی۔ اس میں ڈاکٹر صاحب ایک ٹیچر سہارن رائے کے ذریعے یہ بتانے کی کوشش کر رہے ہیں کہ تعلیم اور معاشرہ ایک دوسرے سے جڑے ہوئے ہیں۔ معاشرے میں تبدیلی لانے کے لیے ضروری ہے کلاس میں معاشرے کے ایشوز پر بات کیا جائے اور سکول سے نکل کر باہر عملی سرگرمیوں میں حصہ لیا جائے۔ اگر میں غلط نہ سمجھا ہوں تو ڈاکٹر صاحب کے ناولٹ میں سہارن رائے کی زندگی میں اس کا خواب؛ انقلابی، مساویانہ اور منصفانہ نظامِ تعلیم (Transformative equitable and just education system) مکمل نہیں ہوتا اور اس کی شاگرد امتشال یہ وعدہ کرتی ہے کہ وہ اپنے گاؤں کے غریب بچوں کو پڑھائے گی۔ آپ کے کہنے پر ڈاکٹر صدیقی کو یہ بھی نہیں بتایا ہے کہ اب آپ کے پاس ان کی کتاب ہے، ورنہ آپ سے کب کا بک ریویو کا کہتے۔</p>
+
+<p>لگتا ہے میں ادھر ادھر کی باتیں بہت کر رہا۔ حال ہی میں میں نے ایک ای میل کا جواب دیا تھا جس کے بعد آپ نے مجھے ملنے کو کہا تھا۔ میں چاہ رہا تھا کہ آپ سے ملوں لیکن میرے کچھ دوستوں نے کہا کہ میں بلاوجہ لوگوں سے الجھ پڑتا ہوں (confront) اور جس کا نتیجہ کچھ نہیں ہوتا، کیوں جا کے کسی سے لڑنا ہے جب بات کوئی سنے گا ہی نہیں۔ جس کی وجہ سے میں اگلے روز ملنے نہیں آیا۔ ملنا اچھا ہوتا یا نہ، خیر اب وہ وقت چلا گیا۔</p>
+
+<p>یہ حقیقت ہے کہ لکھے ہوئے الفاظ کا اثر بولے ہوئے الفاظ سے کہیں زیادہ ہوتا ہے۔ جب بھی میں نے کوئی مشورہ ہو یا پھر طلبہ کے حقوق کی بات کی ہے، اس کو سامنے سے منفی ردِعمل ملا ہے۔ میں نے کئی ای میلز (emails) کی ہیں۔ جن بڑے حضرات کو میں نے ای میل کی ہیں ان میں ایک وی سی (VC)، ہیڈ اف ڈیپارٹمنٹ (HoD) اور اب اس فہرست میں تو میں ایک ڈین (Dean) کے نام کا بھی اضافہ ہوا ہے۔ اگر کوئی اس بات کی اجازت دیتا تو میں بڑی خوش اسلوبی سے ان ای میلز کو لکھنے اور ان تینوں حضرات جو ایڈمنسٹریٹیو پوزیشن پر کام کر رہے ہیں ان کے ردعمل ایک ناولٹ کے انداز میں لکھوں گا۔</p>
+
+
+  </div>
+
+  <!-- Back link -->
+  <p class="post-back">
+    <button onclick="history.back()" class="post-back-btn">
+      ← واپس جائیں
+    </button>
+  </p>
+
+</article>
+
+  </main>
+
+  <!-- ============================================================
+     footer.html – site-wide footer
+     Centered, stacked layout: nav links, call-for-pubs/guidelines,
+     social row, privacy policy, copyright.
+     Background: #009F93, Text: #FFFFFF. No icons anywhere.
+     ============================================================ -->
+<footer class="site-footer" style="background-color:#009F93; color:#FFFFFF;">
+  <div class="footer-inner">
+
+    <!-- Row 1: Return to ... main section links -->
+    <p class="footer-row">
+      <span class="footer-label">واپس جائیں:</span>
+      
+        <a href="/eduwings/ur/" style="color:#FFFFFF;">
+          گھر
+        </a> · 
+      
+        <a href="/eduwings/ur/blogs/" style="color:#FFFFFF;">
+          بلاگز
+        </a> · 
+      
+        <a href="/eduwings/ur/opeds/" style="color:#FFFFFF;">
+          اوپ ایڈ
+        </a> · 
+      
+        <a href="/eduwings/ur/letters/" style="color:#FFFFFF;">
+          خطوط
+        </a> · 
+      
+        <a href="/eduwings/ur/book-reviews/" style="color:#FFFFFF;">
+          کتابی جائزے
+        </a> · 
+      
+        <a href="/eduwings/ur/reflections/" style="color:#FFFFFF;">
+          عکاسی
+        </a> · 
+      
+        <a href="/eduwings/ur/main-ne-kya-dekha/" style="color:#FFFFFF;">
+          میں نے کیا دیکھا
+        </a>
+      
+    </p>
+
+    <!-- Row 2: Call for Publications / Guidelines -->
+    <p class="footer-row">
+      
+      
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+      &nbsp;&nbsp;
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+    </p>
+
+    <!-- Row 3: Social -->
+    <p class="footer-row">
+      <span class="footer-label">ہمیں فالو کریں:</span>
+      <a href="#" style="color:#FFFFFF;">YouTube</a> ·
+      <a href="#" style="color:#FFFFFF;">X</a> ·
+      <a href="#" style="color:#FFFFFF;">Instagram</a>
+    </p>
+
+    <!-- Row 4: Privacy Policy -->
+    <p class="footer-row">
+      <a href="/eduwings/ur/privacy/" style="color:#FFFFFF;">
+        رازداری کی پالیسی
+      </a>
+    </p>
+
+    <!-- Row 5: Copyright -->
+    <p class="footer-copy">
+      &copy; 2026 EduWings.
+      
+        تمام حقوق محفوظ ہیں۔
+      
+    </p>
+
+  </div><!-- /.footer-inner -->
+</footer>
+
+
+</body>
+</html>

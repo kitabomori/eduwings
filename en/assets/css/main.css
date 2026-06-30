@@ -1,0 +1,418 @@
+/* ============================================================
+   main.css – Tailwind CSS input file for EduWings.
+   PostCSS/Tailwind processes this file during build.
+   Custom component styles follow the @tailwind directives.
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CUSTOM COMPONENT STYLES
+   ============================================================ */
+
+/* ---- Header ---- */
+.site-header {
+  @apply w-full sticky top-0 z-50 shadow-sm;
+}
+
+.header-inner {
+  @apply max-w-7xl mx-auto px-4 py-3 flex items-center justify-between flex-wrap gap-2;
+}
+
+.site-title {
+  @apply text-xl font-bold tracking-tight;
+}
+
+.nav-toggle {
+  @apply md:hidden;
+}
+
+.main-nav {
+  @apply hidden md:block w-full md:w-auto;
+}
+
+.main-nav.open {
+  @apply block;
+}
+
+.main-nav ul {
+  @apply flex flex-col md:flex-row flex-wrap gap-x-4 gap-y-1 mt-2 md:mt-0 list-none p-0 m-0;
+}
+
+.main-nav ul li a {
+  @apply text-sm font-medium hover:underline;
+}
+
+.header-controls {
+  @apply flex items-center gap-2 flex-shrink-0;
+}
+
+/* ---- Ticker ---- */
+.ticker-bar {
+  @apply flex items-center overflow-hidden py-2;
+}
+
+.dark .ticker-bar {
+  background-color: #1a1a1a !important;
+}
+
+.ticker-label {
+  @apply text-sm font-semibold flex-shrink-0;
+}
+
+.ticker-overflow {
+  @apply flex-1 overflow-hidden;
+}
+
+.ticker-track {
+  @apply flex whitespace-nowrap;
+  animation: ticker-scroll 35s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.ticker-track.paused {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* RTL: reverse scroll direction */
+[dir="rtl"] .ticker-track {
+  animation-direction: reverse;
+}
+
+.ticker-item {
+  @apply text-sm font-medium;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---- Page layout ---- */
+.page-container {
+  @apply max-w-3xl mx-auto px-4 py-10;
+}
+
+.page-title {
+  @apply text-2xl font-bold mb-6;
+  color: #009F93;
+}
+
+.page-content {
+  @apply prose prose-lg max-w-none;
+}
+
+/* ---- Post layout ---- */
+.post-container {
+  @apply max-w-3xl mx-auto px-4 py-10;
+}
+
+.post-header {
+  @apply mb-8;
+}
+
+.post-title {
+  @apply text-2xl font-bold mb-2;
+  color: #009F93;
+}
+
+.post-date {
+  @apply text-sm text-gray-500 mb-2;
+}
+
+.post-description {
+  @apply text-base text-gray-600 italic mb-4;
+}
+
+.dark .post-description {
+  @apply text-gray-400;
+}
+
+.post-body {
+  @apply prose prose-lg max-w-none;
+}
+
+.post-back {
+  @apply mt-10 text-sm;
+}
+
+.post-back a {
+  color: #009F93;
+}
+
+.post-back-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #009F93;
+  font: inherit;
+}
+
+/* ---- Home page ---- */
+.home-welcome {
+  @apply mb-12;
+}
+
+.home-heading {
+  @apply text-3xl font-bold mb-2;
+  color: #009F93;
+}
+
+.home-tagline {
+  @apply text-lg text-gray-600 mb-6 italic;
+}
+
+.dark .home-tagline {
+  @apply text-gray-400;
+}
+
+/* ---- Section cards (home) ---- */
+.section-cards {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6;
+}
+
+.section-card {
+  @apply border border-gray-200 rounded-lg p-5;
+}
+
+.dark .section-card {
+  @apply border-gray-700;
+}
+
+.section-card h2 {
+  @apply text-lg font-semibold mb-2;
+}
+
+.section-card h2 a {
+  color: #009F93;
+  text-decoration: none;
+}
+
+.section-card h2 a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Content cards (collection list pages) ---- */
+.card-grid {
+  @apply grid grid-cols-1 gap-6 mt-6;
+}
+
+.content-card {
+  @apply border border-gray-200 rounded-lg p-5;
+}
+
+.dark .content-card {
+  @apply border-gray-700;
+}
+
+.card-title {
+  @apply text-lg font-semibold mb-1;
+}
+
+.card-title a {
+  color: #009F93;
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  text-decoration: underline;
+}
+
+.card-date {
+  @apply text-xs text-gray-500 mb-2;
+}
+
+.card-excerpt {
+  @apply text-sm text-gray-700 mb-3;
+}
+
+.dark .card-excerpt {
+  @apply text-gray-300;
+}
+
+.card-read-more {
+  @apply text-sm font-medium;
+  color: #009F93;
+}
+
+.collection-intro {
+  @apply text-base text-gray-600 mb-6 italic;
+}
+
+.dark .collection-intro {
+  @apply text-gray-400;
+}
+
+/* ---- Search ---- */
+.search-result {
+  @apply py-3 border-b border-gray-200;
+}
+
+.dark .search-result {
+  @apply border-gray-700;
+}
+
+.search-result a {
+  color: #009F93;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  @apply mt-16 pt-10 pb-6;
+}
+
+.footer-inner {
+  @apply max-w-4xl mx-auto px-4 flex flex-col items-center text-center gap-3;
+}
+
+.footer-row {
+  @apply text-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1;
+}
+
+.footer-row a {
+  @apply hover:underline whitespace-nowrap;
+}
+
+.footer-label {
+  @apply opacity-80 mr-1;
+}
+
+.footer-copy {
+  @apply text-xs opacity-70 mt-3;
+}
+
+/* ---- Contact ---- */
+.contact-note {
+  @apply mt-4 text-sm text-gray-500 italic;
+}
+
+/* ---- Dark mode base overrides ---- */
+.dark body {
+  @apply bg-gray-900 text-gray-100;
+}
+
+.dark .page-content,
+.dark .post-body {
+  @apply prose-invert;
+}
+
+.dark a {
+  color: #00c8b0;
+}
+
+/* ---- RTL prose ---- */
+[dir="rtl"] .page-content,
+[dir="rtl"] .post-body {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .post-back {
+  text-align: right;
+}
+/* ============================================================
+   HOME PAGE ALIGNMENT OVERRIDES
+   ============================================================ */
+
+/* Main container */
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Welcome section */
+.home-welcome {
+  text-align: center;
+}
+
+.home-heading {
+  text-align: center;
+  color: #009F93;
+}
+
+.home-tagline {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.dark .home-tagline {
+  color: #9ca3af;
+}
+
+/* Intro paragraph */
+.home-welcome p {
+  max-width: 850px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* Cards layout */
+.section-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Card */
+.section-card {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: #fff;
+  text-align: center;
+}
+
+.dark .section-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+/* Card title */
+.section-card h2 {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.section-card h2 a {
+  color: #009F93;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.section-card h2 a:hover {
+  text-decoration: underline;
+}
+
+/* Card description */
+.section-card p {
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Links in intro paragraph */
+.home-welcome a {
+  color: #009F93;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-welcome a:hover {
+  text-decoration: underline;
+}

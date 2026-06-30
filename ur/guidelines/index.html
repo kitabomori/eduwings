@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     base.html – root layout for all pages.
+     Sets html lang/dir, loads head, header, footer, and
+     applies body font from site config.
+     ============================================================ -->
+<html lang="ur"
+      dir="rtl"
+      class="">
+<head>
+  <!-- ============================================================
+     head.html – <head> block for all pages
+     Sets charset, viewport, Google Fonts, Tailwind CSS, theme script,
+     and all metadata. Called once from base.html.
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Page title: prefer page-specific title, fall back to site title -->
+<title>
+  
+    اشاعت کی ہدایات – ایڈیوونگز
+  
+</title>
+
+<!-- Meta description -->
+<meta name="description" content="ایڈیوونگز میں آپنی بلاگ، اوپ ایڈ، کتابی جائزہ یا خط جمع کرانے کا طریقہ۔">
+
+<!-- Open Graph -->
+<meta property="og:title" content="اشاعت کی ہدایات">
+<meta property="og:description" content="ایڈیوونگز میں آپنی بلاگ، اوپ ایڈ، کتابی جائزہ یا خط جمع کرانے کا طریقہ۔">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts: Inter (English) + Noto Nastaliq Urdu (Urdu)
+     Loaded with display=swap for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (compiled by PostCSS build step) -->
+<link rel="stylesheet" href="/eduwings/assets/css/main.css">
+
+<!-- Theme script: runs before paint to prevent flash of wrong colour scheme -->
+<script src="/eduwings/assets/js/theme.js"></script>
+
+<!-- Favicon -->
+<link rel="icon" href="/eduwings/assets/favicon.svg" type="image/svg+xml">
+
+</head>
+<body style="font-family: 'Noto Nastaliq Urdu', serif;">
+
+  <!-- ============================================================
+     header.html – site-wide header
+     Contains: logo/site name, navigation, language switcher, dark mode toggle.
+     Background: #009F93 (brand teal). Text: #FFFFFF.
+     No icons anywhere – plain text only.
+     ============================================================ -->
+<header class="site-header" style="background-color:#009F93;">
+  <div class="header-inner">
+
+    <!-- Site name / logo -->
+    <a href="/eduwings/ur/"
+       class="site-title"
+       style="color:#FFFFFF; text-decoration:none;">
+      ایڈیوونگز
+    </a>
+
+    <!-- Mobile nav toggle (plain text, no icon) -->
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation"
+            aria-expanded="false" aria-controls="main-nav"
+            style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:4px 10px; cursor:pointer; font-size:0.85rem;">
+      مینو
+    </button>
+
+    <!-- Main navigation -->
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        
+        <li>
+          <a href="/eduwings/ur/"
+             style="color:#FFFFFF;">
+            گھر
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/blogs/"
+             style="color:#FFFFFF;">
+            بلاگز
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/opeds/"
+             style="color:#FFFFFF;">
+            اوپ ایڈ
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/letters/"
+             style="color:#FFFFFF;">
+            خطوط
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/book-reviews/"
+             style="color:#FFFFFF;">
+            کتابی جائزے
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/reflections/"
+             style="color:#FFFFFF;">
+            عکاسی
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/main-ne-kya-dekha/"
+             style="color:#FFFFFF;">
+            میں نے کیا دیکھا
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/ur/search/"
+             style="color:#FFFFFF;">
+            تلاش
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <!-- Header controls: language switcher + dark mode toggle -->
+    <div class="header-controls">
+
+      <!-- Language switcher: swaps /en/ <-> /ur/ in the current URL -->
+      <a href="#" onclick="switchLanguage(event)" class="lang-switch"
+         style="color:#FFFFFF; border:1px solid #FFFFFF; padding:3px 10px; text-decoration:none; font-size:0.85rem;">
+        EN
+      </a>
+
+      <!-- Dark mode toggle: plain text, no icon -->
+      <button onclick="toggleDark()" id="theme-btn"
+              style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:3px 10px; cursor:pointer; font-size:0.85rem; margin-right:6px;">
+        تاریک
+      </button>
+
+    </div><!-- /.header-controls -->
+  </div><!-- /.header-inner -->
+</header>
+
+<script>
+  /* --------------------------------------------------------
+     switchLanguage()
+     Swaps /en/ and /ur/ in the current path, then navigates.
+     Falls back to the opposite home page if swap fails.
+  -------------------------------------------------------- */
+  function switchLanguage(e) {
+    e.preventDefault();
+    var path = window.location.pathname;
+    var newPath;
+    if (path.includes('/en/')) {
+      newPath = path.replace('/en/', '/ur/');
+    } else if (path.includes('/ur/')) {
+      newPath = path.replace('/ur/', '/en/');
+    } else {
+      // Fallback: go to opposite home
+      newPath = path.includes('/ur') ? '/eduwings/en/' : '/eduwings/ur/';
+    }
+    window.location.href = newPath;
+  }
+
+  /* --------------------------------------------------------
+     toggleNav()
+     Shows/hides the mobile navigation menu.
+  -------------------------------------------------------- */
+  function toggleNav() {
+    var nav = document.getElementById('main-nav');
+    var btn = document.querySelector('.nav-toggle');
+    var isOpen = nav.classList.toggle('open');
+    if (btn) { btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+  }
+
+  /* --------------------------------------------------------
+     Update dark mode button label after theme.js runs.
+  -------------------------------------------------------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('theme-btn');
+    if (btn) {
+      var isDark = document.documentElement.classList.contains('dark');
+      
+        btn.textContent = isDark ? 'روشن' : 'تاریک';
+      
+    }
+  });
+</script>
+
+
+  <main id="main-content">
+    <!-- ============================================================
+     page.html – layout for standard content pages.
+     Wraps content in a centred container with page-title heading.
+     ============================================================ -->
+<div class="page-container">
+
+  <h1 class="page-title">
+    
+      اشاعت کی ہدایات
+    
+  </h1>
+
+  <div class="page-content">
+    
+<h2 id="اشاعت-کی-ہدایات">اشاعت کی ہدایات</h2>
+
+<p>ایڈیوونگز پر اشاعت کے لیے آپ کا خیر مقدم ہے۔ ذیل میں چار اقسام کی تحریروں کے لیے مکمل ہدایات دی گئی ہیں۔</p>
+
+<hr />
+
+<h3 id="سیکشن-الف-بلاگز-bera-بلاگ-طرز">سیکشن الف: بلاگز (BERA بلاگ طرز)</h3>
+
+<p><strong>طوالت:</strong> ۵۰۰ سے ۷۵۰ الفاظ (حوالہ جات سمیت)</p>
+
+<p><strong>مقصد:</strong> کسی تعلیمی مسئلے پر تحقیق پر مبنی، عام فہم تحریر — جو عام قارئین کے لیے ہو، نہ کہ صرف ماہرین کے لیے۔ BERA (برطانوی تعلیمی تحقیقی ایسوسی ایشن) کی اپنی ہدایات کے مطابق:</p>
+<ul>
+  <li>بین الاقوامی قارئین کو مدنظر رکھیں، یہ فرض نہ کریں کہ قاری کسی خاص ملک کے تعلیمی نظام سے واقف ہے۔</li>
+  <li>حوالہ جات صرف ضرورت کے مطابق دیں، تحریر کی طوالت کے تناسب سے۔</li>
+  <li>حوالہ جات براہ راست متن میں لنک کی صورت میں دیں؛ اگر باقاعدہ حوالہ ضروری ہو تو APA 7th edition انداز اپنائیں۔</li>
+  <li>ایسے مواد کا لنک نہ دیں جو غیر اخلاقی ہو یا کسی کی دانشورانہ ملکیت کی خلاف ورزی کرتا ہو۔</li>
+</ul>
+
+<p><strong>عمل:</strong></p>
+<ol>
+  <li>مکمل مسودہ، مختصر سوانح اور (اگر دستیاب ہو) تصویر کے ساتھ ای میل کریں۔</li>
+  <li>اگر تحریر کسی شائع شدہ تحقیق، خبر یا واقعہ پر مبنی ہو تو جمع کرانے کے وقت اس کا ذکر کریں۔</li>
+  <li>اگر تحریر تیار کرنے میں کوئی AI ٹول استعمال کیا گیا ہو تو واضح طور پر بتائیں کہ کون سا ٹول اور کس مقصد کے لیے استعمال ہوا۔ حقائق اور حوالہ جات کی درستگی کی ذمہ داری آپ پر ہوگی۔</li>
+  <li>دو ہفتوں کے اندر جواب دیا جائے گا۔</li>
+</ol>
+
+<p><strong>ماخذ:</strong> <a href="https://www.bera.ac.uk/blog/submission-policy">BERA Blog کی جمع کرانے کی پالیسی</a> سے ماخوذ ہدایات۔</p>
+
+<hr />
+
+<h3 id="سیکشن-ب-اوپ-ایڈ-education-week-طرز">سیکشن ب: اوپ ایڈ (Education Week طرز)</h3>
+
+<p><strong>طوالت:</strong> ۷۰۰ سے ۱۰۰۰ الفاظ</p>
+
+<p><strong>مقصد:</strong> تجربے یا تحقیق پر مبنی رائے جس میں عملی تجاویز شامل ہوں۔ لہجہ مستند مگر عام فہم ہو۔</p>
+
+<p><strong>عمل:</strong></p>
+<ol>
+  <li>رابطہ فارم کے ذریعے مکمل مسودہ بھیجیں۔</li>
+  <li>تین ہفتوں کے اندر جواب دیا جائے گا۔</li>
+</ol>
+
+<p><strong>حوالہ:</strong> <a href="https://www.edweek.org/opinion">Education Week Opinion</a></p>
+
+<hr />
+
+<h3 id="سیکشن-ج-کتابی-جائزے">سیکشن ج: کتابی جائزے</h3>
+
+<p><strong>طوالت:</strong> ۵۰۰ سے ۸۰۰ الفاظ</p>
+
+<p><strong>ڈھانچہ:</strong></p>
+<ul>
+  <li>اوپر: کتاب کا نام، مصنف، ناشر</li>
+  <li>خلاصہ</li>
+  <li>خوبیاں</li>
+  <li>کمزوریاں</li>
+  <li>خواندگی، مطالعے یا تعلیم سے مطابقت</li>
+  <li>حتمی تجویز</li>
+</ul>
+
+<p><strong>عمل:</strong></p>
+<ol>
+  <li>پہلے کتاب کا نام ای میل کریں (پچ)۔</li>
+  <li>قبولیت کے بعد چار ہفتوں کے اندر مکمل جائزہ بھیجیں۔</li>
+  <li>وضاحت کے لیے تدوین کی جا سکتی ہے۔</li>
+</ol>
+
+<hr />
+
+<h3 id="مشترک-ہدایات-تمام-اقسام">مشترک ہدایات (تمام اقسام)</h3>
+
+<ul>
+  <li>صرف اصل اور غیر شائع شدہ تحریریں قبول کی جائیں گی۔</li>
+  <li>ابھی صرف انگریزی میں تحریریں قبول ہیں (اردو ترجمہ بعد میں مانگا جا سکتا ہے)۔</li>
+  <li>دو یا تین سطروں کی مختصر مصنف سوانح لازمی شامل کریں۔</li>
+  <li>ایک ساتھ کئی جگہ جمع کرانا منع ہے۔</li>
+  <li>ایڈیوونگز کو رد کرنے کا حق حاصل ہے۔</li>
+  <li>کوئی معاوضہ نہیں دیا جاتا – یہ ایک رضاکارانہ تعلیمی پلیٹ فارم ہے۔</li>
+</ul>
+
+
+  </div>
+
+</div>
+
+  </main>
+
+  <!-- ============================================================
+     footer.html – site-wide footer
+     Centered, stacked layout: nav links, call-for-pubs/guidelines,
+     social row, privacy policy, copyright.
+     Background: #009F93, Text: #FFFFFF. No icons anywhere.
+     ============================================================ -->
+<footer class="site-footer" style="background-color:#009F93; color:#FFFFFF;">
+  <div class="footer-inner">
+
+    <!-- Row 1: Return to ... main section links -->
+    <p class="footer-row">
+      <span class="footer-label">واپس جائیں:</span>
+      
+        <a href="/eduwings/ur/" style="color:#FFFFFF;">
+          گھر
+        </a> · 
+      
+        <a href="/eduwings/ur/blogs/" style="color:#FFFFFF;">
+          بلاگز
+        </a> · 
+      
+        <a href="/eduwings/ur/opeds/" style="color:#FFFFFF;">
+          اوپ ایڈ
+        </a> · 
+      
+        <a href="/eduwings/ur/letters/" style="color:#FFFFFF;">
+          خطوط
+        </a> · 
+      
+        <a href="/eduwings/ur/book-reviews/" style="color:#FFFFFF;">
+          کتابی جائزے
+        </a> · 
+      
+        <a href="/eduwings/ur/reflections/" style="color:#FFFFFF;">
+          عکاسی
+        </a> · 
+      
+        <a href="/eduwings/ur/main-ne-kya-dekha/" style="color:#FFFFFF;">
+          میں نے کیا دیکھا
+        </a>
+      
+    </p>
+
+    <!-- Row 2: Call for Publications / Guidelines -->
+    <p class="footer-row">
+      
+      
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+      &nbsp;&nbsp;
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+    </p>
+
+    <!-- Row 3: Social -->
+    <p class="footer-row">
+      <span class="footer-label">ہمیں فالو کریں:</span>
+      <a href="#" style="color:#FFFFFF;">YouTube</a> ·
+      <a href="#" style="color:#FFFFFF;">X</a> ·
+      <a href="#" style="color:#FFFFFF;">Instagram</a>
+    </p>
+
+    <!-- Row 4: Privacy Policy -->
+    <p class="footer-row">
+      <a href="/eduwings/ur/privacy/" style="color:#FFFFFF;">
+        رازداری کی پالیسی
+      </a>
+    </p>
+
+    <!-- Row 5: Copyright -->
+    <p class="footer-copy">
+      &copy; 2026 EduWings.
+      
+        تمام حقوق محفوظ ہیں۔
+      
+    </p>
+
+  </div><!-- /.footer-inner -->
+</footer>
+
+
+</body>
+</html>

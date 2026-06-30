@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     base.html – root layout for all pages.
+     Sets html lang/dir, loads head, header, footer, and
+     applies body font from site config.
+     ============================================================ -->
+<html lang="en"
+      dir="ltr"
+      class="">
+<head>
+  <!-- ============================================================
+     head.html – <head> block for all pages
+     Sets charset, viewport, Google Fonts, Tailwind CSS, theme script,
+     and all metadata. Called once from base.html.
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Page title: prefer page-specific title, fall back to site title -->
+<title>
+  
+    What I Saw – EduWings
+  
+</title>
+
+<!-- Meta description -->
+<meta name="description" content="Field notes and visual observations on reading and learning spaces.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="What I Saw">
+<meta property="og:description" content="Field notes and visual observations on reading and learning spaces.">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts: Inter (English) + Noto Nastaliq Urdu (Urdu)
+     Loaded with display=swap for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (compiled by PostCSS build step) -->
+<link rel="stylesheet" href="/eduwings/assets/css/main.css">
+
+<!-- Theme script: runs before paint to prevent flash of wrong colour scheme -->
+<script src="/eduwings/assets/js/theme.js"></script>
+
+<!-- Favicon -->
+<link rel="icon" href="/eduwings/assets/favicon.svg" type="image/svg+xml">
+
+</head>
+<body style="font-family: 'Inter', sans-serif;">
+
+  <!-- ============================================================
+     header.html – site-wide header
+     Contains: logo/site name, navigation, language switcher, dark mode toggle.
+     Background: #009F93 (brand teal). Text: #FFFFFF.
+     No icons anywhere – plain text only.
+     ============================================================ -->
+<header class="site-header" style="background-color:#009F93;">
+  <div class="header-inner">
+
+    <!-- Site name / logo -->
+    <a href="/eduwings/en/"
+       class="site-title"
+       style="color:#FFFFFF; text-decoration:none;">
+      EduWings
+    </a>
+
+    <!-- Mobile nav toggle (plain text, no icon) -->
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation"
+            aria-expanded="false" aria-controls="main-nav"
+            style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:4px 10px; cursor:pointer; font-size:0.85rem;">
+      Menu
+    </button>
+
+    <!-- Main navigation -->
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        
+        <li>
+          <a href="/eduwings/en/"
+             style="color:#FFFFFF;">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/blogs/"
+             style="color:#FFFFFF;">
+            Blogs
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/opeds/"
+             style="color:#FFFFFF;">
+            Op-Eds
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/letters/"
+             style="color:#FFFFFF;">
+            Letters
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/book-reviews/"
+             style="color:#FFFFFF;">
+            Book Reviews
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/reflections/"
+             style="color:#FFFFFF;">
+            Reflections
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/main-ne-kya-dekha/"
+             style="color:#FFFFFF;">
+            What I Saw
+          </a>
+        </li>
+        
+        <li>
+          <a href="/eduwings/en/search/"
+             style="color:#FFFFFF;">
+            Search
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <!-- Header controls: language switcher + dark mode toggle -->
+    <div class="header-controls">
+
+      <!-- Language switcher: swaps /en/ <-> /ur/ in the current URL -->
+      <a href="#" onclick="switchLanguage(event)" class="lang-switch"
+         style="color:#FFFFFF; border:1px solid #FFFFFF; padding:3px 10px; text-decoration:none; font-size:0.85rem;">
+        UR
+      </a>
+
+      <!-- Dark mode toggle: plain text, no icon -->
+      <button onclick="toggleDark()" id="theme-btn"
+              style="color:#FFFFFF; background:none; border:1px solid #FFFFFF; padding:3px 10px; cursor:pointer; font-size:0.85rem; margin-left:6px;">
+        Dark
+      </button>
+
+    </div><!-- /.header-controls -->
+  </div><!-- /.header-inner -->
+</header>
+
+<script>
+  /* --------------------------------------------------------
+     switchLanguage()
+     Swaps /en/ and /ur/ in the current path, then navigates.
+     Falls back to the opposite home page if swap fails.
+  -------------------------------------------------------- */
+  function switchLanguage(e) {
+    e.preventDefault();
+    var path = window.location.pathname;
+    var newPath;
+    if (path.includes('/en/')) {
+      newPath = path.replace('/en/', '/ur/');
+    } else if (path.includes('/ur/')) {
+      newPath = path.replace('/ur/', '/en/');
+    } else {
+      // Fallback: go to opposite home
+      newPath = path.includes('/ur') ? '/eduwings/en/' : '/eduwings/ur/';
+    }
+    window.location.href = newPath;
+  }
+
+  /* --------------------------------------------------------
+     toggleNav()
+     Shows/hides the mobile navigation menu.
+  -------------------------------------------------------- */
+  function toggleNav() {
+    var nav = document.getElementById('main-nav');
+    var btn = document.querySelector('.nav-toggle');
+    var isOpen = nav.classList.toggle('open');
+    if (btn) { btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
+  }
+
+  /* --------------------------------------------------------
+     Update dark mode button label after theme.js runs.
+  -------------------------------------------------------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('theme-btn');
+    if (btn) {
+      var isDark = document.documentElement.classList.contains('dark');
+      
+        btn.textContent = isDark ? 'Light' : 'Dark';
+      
+    }
+  });
+</script>
+
+
+  <main id="main-content">
+    <!-- ============================================================
+     page.html – layout for standard content pages.
+     Wraps content in a centred container with page-title heading.
+     ============================================================ -->
+<div class="page-container">
+
+  <h1 class="page-title">
+    
+      What I Saw
+    
+  </h1>
+
+  <div class="page-content">
+    
+<p class="collection-intro">Field notes and visual observations on reading and learning spaces.</p>
+
+<hr />
+
+<h3 id="one-children-reading-in-a-rural-classroom">One: Children Reading in a Rural Classroom</h3>
+
+<p>I arrived at the government primary school in the early morning. Outside, rope cots had been laid out and children sat on the floor. In one room, three grade levels were being taught simultaneously. The teacher wrote words on the blackboard; the children found those words in their textbooks and read them aloud, tracing each one with a finger. The room was not silent, but it had a particular kind of hum — each child reading at their own pace.</p>
+
+<p>What stayed with me most was a girl, perhaps six or seven years old, reading aloud to her younger sister from the same book. She was still learning to read herself, yet the instinct to teach was already there. Outside the school, life was difficult and uneven. But inside that room, the book was something they all held in common.</p>
+
+<hr />
+
+<h3 id="two-a-librarys-silent-hour">Two: A Library’s Silent Hour</h3>
+
+<p>A small public library in the city, mid-afternoon. About fifteen people were there. Some were students, some older. An elderly man read a newspaper through thick glasses. A young woman with an infant in her lap read a novel — the baby was asleep and she kept reading.</p>
+
+<p>There was something quietly reassuring about it: in spite of the digital world pressing in from all sides, some people still chose to sit with paper. The library was not silent, but it was not noisy either. It had that particular breathing quality that only exists when many people are reading in the same place at the same time.</p>
+
+<hr />
+
+<h3 id="three-street-booksellers-in-the-market">Three: Street Booksellers in the Market</h3>
+
+<p>A book cart along a lane in the old city. Old novels, textbooks, religious books, Urdu literature — all piled together. The young man running the cart was himself turning pages of a book whenever a customer was not there.</p>
+
+<p>A man came, sorted through a stack of used books, pulled one out, asked the price, bargained briefly, and left. The contents of the book were never mentioned — only the price and its condition. But the man kept buying and the bookseller kept selling. The book kept finding its way somewhere.</p>
+
+<hr />
+
+<h3 id="four-a-police-officer-on-duty">Four: A Police Officer on Duty</h3>
+
+<p>I observed a police officer performing his daily duties and learned that the job requires responsibility, discipline, and patience. The officer was managing traffic, assisting members of the public, and ensuring that people followed the law. He remained calm and professional while interacting with different individuals, even in busy and stressful situations.</p>
+
+<p>I noticed that the police officer was attentive to his surroundings and responded quickly whenever someone needed assistance. He treated people respectfully while enforcing the rules, showing that policing is not only about maintaining law and order but also about serving the community.</p>
+
+<p>Watching the officer work made me realize that the role of the police is essential for public safety. Their presence helps prevent crime, resolve conflicts, and provide security to citizens. The job often requires long hours, quick decision-making, and the courage to face difficult situations.</p>
+
+<p>This observation increased my respect for police officers and the important role they play in maintaining peace and protecting society. It also taught me the value of discipline, responsibility, and public service.</p>
+
+
+  </div>
+
+</div>
+
+  </main>
+
+  <!-- ============================================================
+     footer.html – site-wide footer
+     Centered, stacked layout: nav links, call-for-pubs/guidelines,
+     social row, privacy policy, copyright.
+     Background: #009F93, Text: #FFFFFF. No icons anywhere.
+     ============================================================ -->
+<footer class="site-footer" style="background-color:#009F93; color:#FFFFFF;">
+  <div class="footer-inner">
+
+    <!-- Row 1: Return to ... main section links -->
+    <p class="footer-row">
+      <span class="footer-label">Return to:</span>
+      
+        <a href="/eduwings/en/" style="color:#FFFFFF;">
+          Home
+        </a> · 
+      
+        <a href="/eduwings/en/blogs/" style="color:#FFFFFF;">
+          Blogs
+        </a> · 
+      
+        <a href="/eduwings/en/opeds/" style="color:#FFFFFF;">
+          Op-Eds
+        </a> · 
+      
+        <a href="/eduwings/en/letters/" style="color:#FFFFFF;">
+          Letters
+        </a> · 
+      
+        <a href="/eduwings/en/book-reviews/" style="color:#FFFFFF;">
+          Book Reviews
+        </a> · 
+      
+        <a href="/eduwings/en/reflections/" style="color:#FFFFFF;">
+          Reflections
+        </a> · 
+      
+        <a href="/eduwings/en/main-ne-kya-dekha/" style="color:#FFFFFF;">
+          What I Saw
+        </a>
+      
+    </p>
+
+    <!-- Row 2: Call for Publications / Guidelines -->
+    <p class="footer-row">
+      
+      
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+      &nbsp;&nbsp;
+      <a href="" style="color:#FFFFFF;">
+        
+      </a>
+    </p>
+
+    <!-- Row 3: Social -->
+    <p class="footer-row">
+      <span class="footer-label">Follow us:</span>
+      <a href="#" style="color:#FFFFFF;">YouTube</a> ·
+      <a href="#" style="color:#FFFFFF;">X</a> ·
+      <a href="#" style="color:#FFFFFF;">Instagram</a>
+    </p>
+
+    <!-- Row 4: Privacy Policy -->
+    <p class="footer-row">
+      <a href="/eduwings/en/privacy/" style="color:#FFFFFF;">
+        Privacy Policy
+      </a>
+    </p>
+
+    <!-- Row 5: Copyright -->
+    <p class="footer-copy">
+      &copy; 2026 EduWings.
+      
+        All rights reserved. A volunteer educational publishing initiative.
+      
+    </p>
+
+  </div><!-- /.footer-inner -->
+</footer>
+
+
+</body>
+</html>
