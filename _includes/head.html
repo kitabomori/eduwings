@@ -9,9 +9,9 @@
 <!-- Page title: prefer page-specific title, fall back to site title -->
 <title>
   {% if page.title_en %}
-    {% if site.lang == 'en' %}{{ page.title_en }} – EduWings{% else %}{{ page.title_ur }} – ایڈیوونگز{% endif %}
+    {% if site.lang == 'en' %}{{ page.title_en }} – Kitabomori{% else %}{{ page.title_ur }} – کتابومری{% endif %}
   {% else %}
-    EduWings – Promoting reading through evidence-based research
+    Kitabomori – Promoting reading through evidence-based research
   {% endif %}
 </title>
 
@@ -19,7 +19,7 @@
 <meta name="description" content="{% if site.lang == 'en' %}{{ page.description_en | default: site.tagline }}{% else %}{{ page.description_ur | default: site.tagline }}{% endif %}">
 
 <!-- Open Graph -->
-<meta property="og:title" content="{% if site.lang == 'en' %}{{ page.title_en | default: 'EduWings' }}{% else %}{{ page.title_ur | default: 'ایڈیوونگز' }}{% endif %}">
+<meta property="og:title" content="{% if site.lang == 'en' %}{{ page.title_en | default: 'Kitabomori' }}{% else %}{{ page.title_ur | default: 'کتابومری' }}{% endif %}">
 <meta property="og:description" content="{% if site.lang == 'en' %}{{ page.description_en | default: site.tagline }}{% else %}{{ page.description_ur | default: site.tagline }}{% endif %}">
 <meta property="og:type" content="website">
 

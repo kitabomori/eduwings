@@ -1,5 +1,5 @@
 /* ============================================================
-   search.js – Client-side search for EduWings.
+   search.js – Client-side search for Kitabomori.
    Fetches search_index.json and filters by language + query.
    SITE_LANG and SITE_BASEURL are set inline in search.md.
    ============================================================ */

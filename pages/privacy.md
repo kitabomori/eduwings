@@ -2,8 +2,8 @@
 layout: page
 title_en: "Privacy Policy"
 title_ur: "رازداری کی پالیسی"
-description_en: "EduWings privacy policy: no tracking, no cookies, no data sharing."
-description_ur: "ایڈیوونگز کی رازداری کی پالیسی: کوئی ٹریکنگ نہیں، کوئی کوکیز نہیں، کوئی ڈیٹا اشتراک نہیں۔"
+description_en: "Kitabomori privacy policy: no tracking, no cookies, no data sharing."
+description_ur: "کتابومری کی رازداری کی پالیسی: کوئی ٹریکنگ نہیں، کوئی کوکیز نہیں، کوئی ڈیٹا اشتراک نہیں۔"
 permalink: /privacy/
 ---
 
@@ -15,7 +15,7 @@ permalink: /privacy/
 
 ### ہم کوئی ڈیٹا اکٹھا نہیں کرتے
 
-ایڈیوونگز آپ کا کوئی ذاتی ڈیٹا اکٹھا نہیں کرتا۔ ہم کوئی تجزیاتی سافٹ ویئر، کوکیز، یا ٹریکنگ اسکرپٹس استعمال نہیں کرتے۔
+کتابومری آپ کا کوئی ذاتی ڈیٹا اکٹھا نہیں کرتا۔ ہم کوئی تجزیاتی سافٹ ویئر، کوکیز، یا ٹریکنگ اسکرپٹس استعمال نہیں کرتے۔
 
 ### تھرڈ پارٹی سروسز
 
@@ -38,7 +38,7 @@ permalink: /privacy/
 
 ### We do not collect your data
 
-EduWings does not collect any personal data from visitors. We do not use analytics software, cookies, or tracking scripts of any kind.
+Kitabomori does not collect any personal data from visitors. We do not use analytics software, cookies, or tracking scripts of any kind.
 
 ### Third-party services
 

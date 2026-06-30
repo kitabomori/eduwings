@@ -1,4 +1,4 @@
-# EduWings – ایڈیوونگز
+# Kitabomori – کتابومری
 
 **Promoting reading through evidence-based research**  
 تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ
@@ -24,7 +24,7 @@ A bilingual (English/Urdu) educational publishing website built with Jekyll, Tai
 
 ## What this site is
 
-EduWings publishes six types of content:
+Kitabomori publishes six types of content:
 
 | Type | Folder | Purpose |
 |------|--------|---------|

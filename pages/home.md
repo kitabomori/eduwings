@@ -2,8 +2,8 @@
 layout: base
 title_en: "Home"
 title_ur: "گھر"
-description_en: "EduWings – Promoting reading through evidence-based research"
-description_ur: "ایڈیوونگز – تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ"
+description_en: "Kitabomori – Promoting reading through evidence-based research"
+description_ur: "کتابومری – تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ"
 permalink: /
 ---
 
@@ -15,10 +15,10 @@ permalink: /
   {% if site.lang == 'ur' %}
 
   <section class="home-welcome">
-    <h1 class="home-heading">ایڈیوونگز میں خوش آمدید</h1>
+    <h1 class="home-heading">کتابومری میں خوش آمدید</h1>
     <p class="home-tagline">تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ</p>
     <p>
-      ایڈیوونگز ایک رضاکارانہ تعلیمی اشاعتی پلیٹ فارم ہے جو محققین، طلباء، اساتذہ، پالیسی سازوں، صحافیوں اور عوام کے لیے بنایا گیا ہے۔
+      کتابومری ایک رضاکارانہ تعلیمی اشاعتی پلیٹ فارم ہے جو محققین، طلباء، اساتذہ، پالیسی سازوں، صحافیوں اور عوام کے لیے بنایا گیا ہے۔
       ہمارا مقصد تعلیم، خواندگی اور مطالعے سے متعلق شواہد پر مبنی گفتگو کو فروغ دینا ہے۔
     </p>
     <p>
@@ -66,10 +66,10 @@ permalink: /
   {% else %}
 
   <section class="home-welcome">
-    <h1 class="home-heading">Welcome to EduWings</h1>
+    <h1 class="home-heading">Welcome to Kitabomori</h1>
     <p class="home-tagline">Promoting awareness through  reading and writing</p>
     <p>
-      EduWings is a volunteer educational publishing platform created for researchers, students, teachers, policymakers, and the general public.
+      Kitabomori is a volunteer educational publishing platform created for researchers, students, teachers, policymakers, and the general public.
       Our aim is to promote awareness through reading, writing and conversations about education, literacy, and the culture based on evidence.
     </p>
   

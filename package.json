@@ -1,7 +1,7 @@
 {
   "name": "eduwings",
   "version": "1.0.0",
-  "description": "EduWings – bilingual educational publishing website",
+  "description": "Kitabomori – bilingual educational publishing website",
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./assets/css/main.css -o ./_site/assets/css/main.css --minify",

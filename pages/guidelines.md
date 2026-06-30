@@ -2,8 +2,8 @@
 layout: page
 title_en: "Submission Guidelines"
 title_ur: "اشاعت کی ہدایات"
-description_en: "How to submit your blog, op-ed, book review, or letter to EduWings."
-description_ur: "ایڈیوونگز میں آپنی بلاگ، اوپ ایڈ، کتابی جائزہ یا خط جمع کرانے کا طریقہ۔"
+description_en: "How to submit your blog, op-ed, book review, or letter to Kitabomori."
+description_ur: "کتابومری میں آپنی بلاگ، اوپ ایڈ، کتابی جائزہ یا خط جمع کرانے کا طریقہ۔"
 permalink: /guidelines/
 ---
 
@@ -11,7 +11,7 @@ permalink: /guidelines/
 
 ## اشاعت کی ہدایات
 
-ایڈیوونگز پر اشاعت کے لیے آپ کا خیر مقدم ہے۔ ذیل میں چار اقسام کی تحریروں کے لیے مکمل ہدایات دی گئی ہیں۔
+کتابومری پر اشاعت کے لیے آپ کا خیر مقدم ہے۔ ذیل میں چار اقسام کی تحریروں کے لیے مکمل ہدایات دی گئی ہیں۔
 
 ---
 
@@ -74,14 +74,14 @@ permalink: /guidelines/
 - ابھی صرف انگریزی میں تحریریں قبول ہیں (اردو ترجمہ بعد میں مانگا جا سکتا ہے)۔
 - دو یا تین سطروں کی مختصر مصنف سوانح لازمی شامل کریں۔
 - ایک ساتھ کئی جگہ جمع کرانا منع ہے۔
-- ایڈیوونگز کو رد کرنے کا حق حاصل ہے۔
+- کتابومری کو رد کرنے کا حق حاصل ہے۔
 - کوئی معاوضہ نہیں دیا جاتا – یہ ایک رضاکارانہ تعلیمی پلیٹ فارم ہے۔
 
 {% else %}
 
 ## Submission Guidelines
 
-Welcome to EduWings. Below you will find complete guidelines for each type of contribution we publish.
+Welcome to Kitabomori. Below you will find complete guidelines for each type of contribution we publish.
 
 ---
 
@@ -143,11 +143,11 @@ Welcome to EduWings. Below you will find complete guidelines for each type of co
 ### Common Guidelines (All Contributions)
 
 - We accept only original, previously unpublished work.
-- At present, EduWings publishes in English only. Urdu translations may be requested after acceptance.
+- At present, Kitabomori publishes in English only. Urdu translations may be requested after acceptance.
 - Include a short author bio of 2–3 sentences at the end of your submission.
 - We do not accept simultaneous submissions: please do not submit the same piece to another publication while it is under consideration here.
-- EduWings reserves the right to decline any submission without explanation.
-- No payment is offered. EduWings is a volunteer educational initiative.
+- Kitabomori reserves the right to decline any submission without explanation.
+- No payment is offered. Kitabomori is a volunteer educational initiative.
 
 ---
 

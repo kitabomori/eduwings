@@ -2,8 +2,8 @@
 layout: page
 title_en: "Contact"
 title_ur: "رابطہ"
-description_en: "Get in touch with EduWings to submit your writing or ask a question."
-description_ur: "اپنی تحریر جمع کرانے یا سوال پوچھنے کے لیے ایڈیوونگز سے رابطہ کریں۔"
+description_en: "Get in touch with Kitabomori to submit your writing or ask a question."
+description_ur: "اپنی تحریر جمع کرانے یا سوال پوچھنے کے لیے کتابومری سے رابطہ کریں۔"
 permalink: /contact/
 ---
 

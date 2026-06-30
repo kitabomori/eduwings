@@ -1,5 +1,5 @@
 /* ============================================================
-   theme.js – Dark mode toggle for EduWings.
+   theme.js – Dark mode toggle for Kitabomori.
    Runs before paint to prevent flash of wrong colour scheme.
    Uses localStorage to persist preference.
    Called from base.html <head> so it executes immediately.
