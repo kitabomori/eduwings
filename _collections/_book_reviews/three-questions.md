@@ -1,8 +1,8 @@
 ---
 layout: post
-title_en: "Review: The Three Questions"       
-title_ur: ""         
-date: 2026-07-01          
+title_en: "Review: The Three Questions"
+title_ur: ""
+date: 2026-07-01
 description_en: ""
 description_ur: ""
 ---
