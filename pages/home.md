@@ -2,8 +2,8 @@
 layout: base
 title_en: "Home"
 title_ur: "گھر"
-description_en: "Kitabomori – Promoting reading through evidence-based research"
-description_ur: "کتابومری – تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ"
+description_en: "Kitabomori – Promoting reading and writing culture"
+description_ur: "کتابومری – پڑھنے اور لکھنے کے کلچر کو فروغ دینا"
 permalink: /
 ---
 
@@ -16,7 +16,7 @@ permalink: /
 
   <section class="home-welcome">
     <h1 class="home-heading">کتابومری میں خوش آمدید</h1>
-    <p class="home-tagline">تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ</p>
+    <p class="home-tagline">پڑھنے اور لکھنے کے کلچر کو فروغ دینا</p>
     <p>
       کتابومری ایک رضاکارانہ تعلیمی اشاعتی پلیٹ فارم ہے جو محققین، طلباء، اساتذہ، پالیسی سازوں، صحافیوں اور عوام کے لیے بنایا گیا ہے۔
       ہمارا مقصد تعلیم، خواندگی اور مطالعے سے متعلق شواہد پر مبنی گفتگو کو فروغ دینا ہے۔
@@ -46,7 +46,7 @@ permalink: /
       </div>
 
       <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/ur/book-reviews/">کتابی جائزے</a></h2>
+        <h2><a href="{{ site.baseurl }}/ur/reviews/">کتابی جائزے</a></h2>
         <p>تعلیم، خواندگی اور تحقیق سے متعلق کتابوں کے تنقیدی جائزے۔</p>
       </div>
 
@@ -67,14 +67,14 @@ permalink: /
 
   <section class="home-welcome">
     <h1 class="home-heading">Welcome to Kitabomori</h1>
-    <p class="home-tagline">Promoting awareness through  reading and writing</p>
+    <p class="home-tagline">Promoting reading and writing culture</p>
     <p>
       Kitabomori is a volunteer educational publishing platform created for researchers, students, teachers, policymakers, and the general public.
       Our aim is to promote awareness through reading, writing and conversations about education, literacy, and the culture based on evidence.
     </p>
   
   <p>
-  Here you will find blogs, op-eds, letters, book reviews, and personal reflections.
+  Here you will find blogs, op-eds, letters, reviews, and personal reflections.
   If you would like to contribute your writing, please read our <span class="highlight"><a href="{{ site.baseurl }}/en/guidelines/">Guidelines</a></span> and <span class="highlight"><a href="{{ site.baseurl }}/en/contact/">get in touch</a></span>.
 </p>
 </section>
@@ -98,7 +98,7 @@ permalink: /
       </div>
 
       <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/en/book-reviews/">Book Reviews</a></h2>
+        <h2><a href="{{ site.baseurl }}/en/reviews/">Reviews</a></h2>
         <p>Critical reviews of books on education, literacy, and research.</p>
       </div>
 

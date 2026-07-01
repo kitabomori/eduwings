@@ -18,10 +18,10 @@
   url_en: "/en/letters/"
   url_ur: "/ur/letters/"
 
-- name_en: "Book Reviews"
-  name_ur: "کتابی جائزے"
-  url_en: "/en/book-reviews/"
-  url_ur: "/ur/book-reviews/"
+- name_en: "Reviews"
+  name_ur: "تبصرہ"
+  url_en: "/en/reviews/"
+  url_ur: "/ur/reviews/"
 
 - name_en: "Reflections"
   name_ur: "عکاسی"

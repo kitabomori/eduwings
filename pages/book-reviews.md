@@ -1,7 +1,7 @@
 ---
 layout: page
-title_en: "Book Reviews"
-title_ur: "کتابی جائزے"
+title_en: "Reviews"
+title_ur: "تبصرہ"
 description_en: "Critical reviews of books on education, literacy, and research."
 description_ur: "تعلیم، خواندگی اور تحقیق سے متعلق کتابوں کے تنقیدی جائزے۔"
 permalink: /book-reviews/

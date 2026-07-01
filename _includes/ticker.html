@@ -29,7 +29,7 @@
   {% assign ticker_items = ticker_items | push: item %}
 {% endfor %}
 
-{% for item in site.book_reviews %}
+{% for item in site.reviews %}
   {% assign ticker_items = ticker_items | push: item %}
 {% endfor %}
 
@@ -76,9 +76,9 @@
         {% elsif site.letters contains item %}
           {% assign item_type_en = "Letter" %}
           {% assign item_type_ur = "خط" %}
-        {% elsif site.book_reviews contains item %}
-          {% assign item_type_en = "Book Review" %}
-          {% assign item_type_ur = "کتابی جائزہ" %}
+        {% elsif site.reviews contains item %}
+          {% assign item_type_en = "Review" %}
+          {% assign item_type_ur = "تبصرہ" %}
             {% if site.blogs reflections item %}
           {% assign item_type_en = "reflections" %}
           {% assign item_type_ur = "عکاسی" %}
@@ -109,9 +109,9 @@
         {% elsif site.letters contains item %}
           {% assign item_type_en = "Letter" %}
           {% assign item_type_ur = "خط" %}
-        {% elsif site.book_reviews contains item %}
-          {% assign item_type_en = "Book Review" %}
-          {% assign item_type_ur = "کتابی جائزہ" %}
+        {% elsif site.reviews contains item %}
+          {% assign item_type_en = "Review" %}
+          {% assign item_type_ur = "تبصرہ" %}
         {% endif %}
         <span class="ticker-item" style="color:#00C851;" aria-hidden="true">
           <a href="{{ site.baseurl }}/{{ site.lang }}{{ item.url }}" style="color:#00C851; text-decoration:none;">
