@@ -21,7 +21,7 @@ permalink: /
       شینا زبان میں "کتاب" کا مطلب ہے کتاب، اور "موری" کا مطلب ہے گفتگو۔ اسی لیے یہ پہل مطالعے اور تحریر کو فروغ دیتی ہے اور تعلیم، ثقافت، زبان اور انسانی تجربے سے جڑی ہر بات پر گفتگو کو جنم دیتی ہے۔ اس کا مقصد سمجھ بوجھ کے لیے فکر انگیز مکالمے کی حوصلہ افزائی کرنا ہے۔ یہاں آپ کو بلاگز، کالم، جائزے، عکاسی، تخلیقی تحریر اور خطوط ملیں گے۔
     </p>
     <p>
-      کتابومری ایک رضاکارانہ تعلیمی اشاعتی پلیٹ فارم ہے جو محققین، طلباء، اساتذہ، پالیسی سازوں اور عام قارئین کے لیے بنایا گیا ہے۔ اگر آپ اپنی تحریر شیئر کرنا چاہتے ہیں تو ہماری <span class="highlight"><a href="{{ site.baseurl }}/ur/guidelines/">ہدایات</a></span> پڑھیں اور <span class="highlight"><a href="{{ site.baseurl }}/ur/contact/">رابطہ</a></span> کریں۔
+      کتابومری ایک رضاکارانہ تعلیمی اشاعتی پلیٹ فارم ہے جو محققین، طلباء، اساتذہ، پالیسی سازوں اور عام قارئین کے لیے بنایا گیا ہے۔ اگر آپ اپنی تحریر شیئر کرنا چاہتے ہیں تو ہماری <span class="highlight"><a href="{{ site.baseurl }}/ur/guidelines/">ہدایات</a></span> پڑھیں اور <span class="highlight"><a href="{{ site.baseurl }}/ur/submission/">تحریر جمع کروائیں</a></span>۔
     </p>
   </section>
 
@@ -75,7 +75,7 @@ permalink: /
       In Shina, "kitab" means "book," and "mori" means "conversation." Hence, this initiative promotes reading and writing and ignites conversation about education, culture, language, and everything that relates to human experience. It aims to encourage thoughtful discussion for understanding. Here, you will find blogs, op-eds, reviews, reflections, creative writing, and letters.
     </p>
     <p>
-      Kitabomori is a volunteer educational publishing platform created for researchers, students, teachers, policymakers, and the general public. If you would like to contribute your writing, please read our <span class="highlight"><a href="{{ site.baseurl }}/en/guidelines/">submission guidelines</a></span> and <span class="highlight"><a href="{{ site.baseurl }}/en/contact/">get in touch</a></span>.
+      Kitabomori is a volunteer educational publishing platform created for researchers, students, teachers, policymakers, and the general public. If you would like to contribute your writing, please read our <span class="highlight"><a href="{{ site.baseurl }}/en/guidelines/">submission guidelines</a></span> and <span class="highlight"><a href="{{ site.baseurl }}/en/submission/">submit your work</a></span>.
     </p>
   </section>
 

@@ -20,7 +20,7 @@ permalink: /privacy/
 ### تھرڈ پارٹی سروسز
 
 - **گوگل فونٹس:** یہ سائٹ گوگل فونٹس استعمال کرتی ہے۔ اس سے آپ کا آئی پی ایڈریس گوگل کو بھیجا جا سکتا ہے۔ براہ کرم [گوگل کی پرائیویسی پالیسی](https://policies.google.com/privacy) دیکھیں۔
-- **گوگل فارم:** جب یہ فعال ہوگا، رابطہ فارم گوگل فارم کا استعمال کرے گا۔ اس سے جمع کرایا گیا ڈیٹا گوگل کے سرورز پر محفوظ ہوگا۔
+- **گوگل فارم:** جمع کروانے کے صفحے پر ایک گوگل فارم موجود ہے۔ اس کے ذریعے جمع کرایا گیا ڈیٹا گوگل کے سرورز پر محفوظ ہوتا ہے اور گوگل کی رازداری کی شرائط کے تابع ہے۔
 
 ### لوکل اسٹوریج
 
@@ -43,7 +43,7 @@ Kitabomori does not collect any personal data from visitors. We do not use analy
 ### Third-party services
 
 - **Google Fonts:** This site loads fonts from Google Fonts. Your browser may send your IP address to Google in order to retrieve the font files. Please see [Google's Privacy Policy](https://policies.google.com/privacy) for details.
-- **Google Forms:** When activated, the Contact page will use an embedded Google Form. Data submitted through that form will be stored on Google's servers and subject to Google's privacy terms.
+- **Google Forms:** The Submission page includes an embedded Google Form. Data submitted through that form is stored on Google's servers and subject to Google's privacy terms.
 
 ### Local storage
 

@@ -152,7 +152,7 @@ permalink: /guidelines/
 
 ---
 
-**جمع کروانے کے لیے:** ہمارا [جمع کروانے کا صفحہ]({{ site.baseurl }}/ur/submission/) دیکھیں، ہمارے [رابطہ صفحے]({{ site.baseurl }}/ur/contact/) کا استعمال کریں، یا ای میل کریں [kitabomori@gmail.com](mailto:kitabomori@gmail.com)۔
+**جمع کروانے کے لیے:** ہمارا [جمع کروانے کا صفحہ]({{ site.baseurl }}/ur/submission/) دیکھیں یا ای میل کریں [kitabomori@gmail.com](mailto:kitabomori@gmail.com)۔
 
 {% else %}
 
@@ -189,7 +189,7 @@ Welcome to Kitabomori. Below you will find complete guidelines for each type of 
 **Purpose:** Opinion grounded in professional experience or research, with concrete and actionable recommendations for educators, policymakers, or institutions. The tone should be authoritative but accessible: write as a knowledgeable practitioner, not as an academic writing for a journal.
 
 **Process:**
-1. Submit the full draft via the Contact form on this site.
+1. Submit the full draft via the Submission page.
 2. You will receive a response within three weeks.
 
 **Reference style:** [Education Week Opinion](https://www.edweek.org/opinion)
@@ -299,6 +299,6 @@ Welcome to Kitabomori. Below you will find complete guidelines for each type of 
 
 ---
 
-**To submit:** Visit our [Submission page]({{ site.baseurl }}/en/submission/), use the [Contact page]({{ site.baseurl }}/en/contact/), or email [kitabomori@gmail.com](mailto:kitabomori@gmail.com).
+**To submit:** Visit our [Submission page]({{ site.baseurl }}/en/submission/) or email [kitabomori@gmail.com](mailto:kitabomori@gmail.com).
 
 {% endif %}

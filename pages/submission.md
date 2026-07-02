@@ -26,7 +26,7 @@ permalink: /submission/
 </p>
 
 <p>
-اگر فارم کھلنے میں مسئلہ ہو یا آپ کا کوئی سوال ہو تو براہ کرم ہم سے <a href="mailto:{{ site.email }}">{{ site.email }}</a> پر رابطہ کریں، یا ہمارے <a href="{{ site.baseurl }}/ur/contact/">رابطہ صفحے</a> پر جائیں۔
+اگر فارم کھلنے میں مسئلہ ہو، یا جمع کروانے سے پہلے آپ کا کوئی سوال یا تجویز ہو تو براہ کرم ہم سے <a href="mailto:{{ site.email }}">{{ site.email }}</a> پر ای میل کریں۔
 </p>
 
 {% else %}
@@ -47,7 +47,7 @@ Once your piece is ready, submit it using the form below. It will ask for the ty
 </p>
 
 <p>
-If you have trouble opening the form, or have a question before submitting, please email us at <a href="mailto:{{ site.email }}">{{ site.email }}</a> or visit our <a href="{{ site.baseurl }}/en/contact/">Contact page</a>.
+If you have trouble opening the form, or have a question or suggestion before submitting, please email us at <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
 </p>
 
 {% endif %}

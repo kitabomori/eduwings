@@ -241,7 +241,6 @@ kitabomori.github.io/
 │   ├── opeds.md
 │   ├── blogs.md
 │   ├── letters.md
-│   ├── contact.md
 │   ├── search.md
 │   └── privacy.md
 ├── _drafts/
