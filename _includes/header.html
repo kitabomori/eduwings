@@ -1,6 +1,7 @@
 <!-- ============================================================
      header.html – site-wide header
-     Contains: logo/site name, navigation, language switcher, dark mode toggle.
+     Contains: logo/site name, navigation (with one dropdown for
+     Creative Writing), language switcher, dark mode toggle.
      Background: #009F93 (brand teal). Text: #FFFFFF.
      No icons anywhere – plain text only.
      ============================================================ -->
@@ -25,12 +26,37 @@
     <nav class="main-nav" id="main-nav">
       <ul>
         {% for item in site.data.navigation %}
+        {% if item.children %}
+        <li class="nav-item-has-children">
+          <div class="nav-parent-row">
+            <a href="{% if site.lang == 'ur' %}{{ item.url_ur }}{% else %}{{ item.url_en }}{% endif %}"
+               style="color:#FFFFFF;">
+              {% if site.lang == 'ur' %}{{ item.name_ur }}{% else %}{{ item.name_en }}{% endif %}
+            </a>
+            <button class="submenu-toggle" onclick="toggleSubmenu(event, this)"
+                     aria-label="{% if site.lang == 'ur' %}ذیلی مینو کھولیں{% else %}Open submenu{% endif %}"
+                     aria-expanded="false"
+                     style="color:#FFFFFF; background:none; border:none; cursor:pointer; padding:0 4px; font-size:0.75rem;">▾</button>
+          </div>
+          <ul class="submenu">
+            {% for child in item.children %}
+            <li>
+              <a href="{% if site.lang == 'ur' %}{{ child.url_ur }}{% else %}{{ child.url_en }}{% endif %}"
+                 style="color:#FFFFFF;">
+                {% if site.lang == 'ur' %}{{ child.name_ur }}{% else %}{{ child.name_en }}{% endif %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% else %}
         <li>
           <a href="{% if site.lang == 'ur' %}{{ item.url_ur }}{% else %}{{ item.url_en }}{% endif %}"
              style="color:#FFFFFF;">
             {% if site.lang == 'ur' %}{{ item.name_ur }}{% else %}{{ item.name_en }}{% endif %}
           </a>
         </li>
+        {% endif %}
         {% endfor %}
       </ul>
     </nav>
@@ -85,6 +111,32 @@
     var isOpen = nav.classList.toggle('open');
     if (btn) { btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
   }
+
+  /* --------------------------------------------------------
+     toggleSubmenu()
+     Mobile: tapping the caret expands/collapses the Creative
+     Writing submenu as an accordion. Desktop uses CSS hover,
+     but the button also works there via click for keyboard/touch
+     users (e.g. tablets that don't fire hover reliably).
+  -------------------------------------------------------- */
+  function toggleSubmenu(e, btn) {
+    e.preventDefault();
+    e.stopPropagation();
+    var li = btn.closest('.nav-item-has-children');
+    var isOpen = li.classList.toggle('submenu-open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  // Close any open submenu when clicking elsewhere
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('.nav-item-has-children.submenu-open').forEach(function (li) {
+      if (!li.contains(e.target)) {
+        li.classList.remove('submenu-open');
+        var btn = li.querySelector('.submenu-toggle');
+        if (btn) { btn.setAttribute('aria-expanded', 'false'); }
+      }
+    });
+  });
 
   /* --------------------------------------------------------
      Update dark mode button label after theme.js runs.

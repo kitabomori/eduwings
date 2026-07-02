@@ -5,6 +5,8 @@ title_ur: ""
 date: 2026-06-30
 author_en: ""
 author_ur: ""
+bio_en: ""
+bio_ur: ""
 description_en: "A look at why Salinger's 1951 novel of adolescence, alienation, and the loss of innocence remains essential reading more than seventy years later."
 description_ur: ""
 ---

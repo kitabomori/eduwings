@@ -1,7 +1,7 @@
 <!-- ============================================================
      footer.html – site-wide footer
-     Centered, stacked layout: nav links, call-for-pubs/guidelines,
-     social row, privacy policy, copyright.
+     Centered, stacked layout: nav links, submission/guidelines,
+     social row, email, privacy policy, copyright.
      Background: #009F93, Text: #FFFFFF. No icons anywhere.
      ============================================================ -->
 <footer class="site-footer" style="background-color:#009F93; color:#FFFFFF;">
@@ -10,42 +10,52 @@
     <!-- Row 1: Return to ... main section links -->
     <p class="footer-row">
       <span class="footer-label">{% if site.lang == 'ur' %}واپس جائیں:{% else %}Return to:{% endif %}</span>
-      {% for item in site.data.navigation limit:7 %}
+      {% assign footer_nav = site.data.navigation | where_exp: "item", "item.name_en != 'Search'" %}
+      {% for item in footer_nav %}
         <a href="{% if site.lang == 'ur' %}{{ item.url_ur }}{% else %}{{ item.url_en }}{% endif %}" style="color:#FFFFFF;">
           {% if site.lang == 'ur' %}{{ item.name_ur }}{% else %}{{ item.name_en }}{% endif %}
         </a>{% unless forloop.last %} · {% endunless %}
       {% endfor %}
     </p>
 
-    <!-- Row 2: Call for Publications / Guidelines -->
+    <!-- Row 2: Submission page / Submission Form / Guidelines -->
     <p class="footer-row">
-      {% assign cfp = site.data.navigation | where: "name_en", "Call for Publications" | first %}
-      {% assign guide = site.data.navigation | where: "name_en", "Guidelines" | first %}
-      <a href="{% if site.lang == 'ur' %}{{ cfp.url_ur }}{% else %}{{ cfp.url_en }}{% endif %}" style="color:#FFFFFF;">
-        {% if site.lang == 'ur' %}{{ cfp.name_ur }}{% else %}{{ cfp.name_en }}{% endif %}
+      <a href="{{ site.baseurl }}/{% if site.lang == 'ur' %}ur{% else %}en{% endif %}/submission/" style="color:#FFFFFF;">
+        {% if site.lang == 'ur' %}تحریر جمع کروائیں{% else %}Submission{% endif %}
       </a>
       &nbsp;&nbsp;
-      <a href="{% if site.lang == 'ur' %}{{ guide.url_ur }}{% else %}{{ guide.url_en }}{% endif %}" style="color:#FFFFFF;">
-        {% if site.lang == 'ur' %}{{ guide.name_ur }}{% else %}{{ guide.name_en }}{% endif %}
+      <a href="https://forms.gle/a3AosqLwLdP7q9Co7" target="_blank" rel="noopener" style="color:#FFFFFF;">
+        {% if site.lang == 'ur' %}جمع کروانے کا فارم{% else %}Submission Form{% endif %}
+      </a>
+      &nbsp;&nbsp;
+      <a href="{{ site.baseurl }}/{% if site.lang == 'ur' %}ur{% else %}en{% endif %}/guidelines/" style="color:#FFFFFF;">
+        {% if site.lang == 'ur' %}ہدایات{% else %}Guidelines{% endif %}
       </a>
     </p>
 
     <!-- Row 3: Social -->
     <p class="footer-row">
       <span class="footer-label">{% if site.lang == 'ur' %}ہمیں فالو کریں:{% else %}Follow us:{% endif %}</span>
-      <a href="#" style="color:#FFFFFF;">YouTube</a> ·
-      <a href="#" style="color:#FFFFFF;">X</a> ·
-      <a href="#" style="color:#FFFFFF;">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61591317160832" target="_blank" rel="noopener" style="color:#FFFFFF;">Facebook</a> ·
+      <a href="https://www.instagram.com/kitabomori/" target="_blank" rel="noopener" style="color:#FFFFFF;">Instagram</a> ·
+      <a href="https://x.com/Kitabomori" target="_blank" rel="noopener" style="color:#FFFFFF;">X</a> ·
+      <a href="https://www.youtube.com/channel/UCKPb3SXn6wcDjMbobIFKxbg" target="_blank" rel="noopener" style="color:#FFFFFF;">YouTube</a>
     </p>
 
-    <!-- Row 4: Privacy Policy -->
+    <!-- Row 4: Email -->
+    <p class="footer-row">
+      <span class="footer-label">{% if site.lang == 'ur' %}ای میل:{% else %}Email:{% endif %}</span>
+      <a href="mailto:{{ site.email }}" style="color:#FFFFFF;">{{ site.email }}</a>
+    </p>
+
+    <!-- Row 5: Privacy Policy -->
     <p class="footer-row">
       <a href="{{ site.baseurl }}/{% if site.lang == 'ur' %}ur{% else %}en{% endif %}/privacy/" style="color:#FFFFFF;">
         {% if site.lang == 'ur' %}رازداری کی پالیسی{% else %}Privacy Policy{% endif %}
       </a>
     </p>
 
-    <!-- Row 5: Copyright -->
+    <!-- Row 6: Copyright -->
     <p class="footer-copy">
       &copy; {{ 'now' | date: "%Y" }} Kitabomori.
       {% if site.lang == 'ur' %}

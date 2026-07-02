@@ -1,7 +1,7 @@
 ---
 layout: base
 title_en: "Home"
-title_ur: "گھر"
+title_ur: "مرکزی صفحہ"
 description_en: "Kitabomori – Promoting reading and writing culture"
 description_ur: "کتابومری – پڑھنے اور لکھنے کے کلچر کو فروغ دینا"
 permalink: /
@@ -16,14 +16,12 @@ permalink: /
 
   <section class="home-welcome">
     <h1 class="home-heading">کتابومری میں خوش آمدید</h1>
-    <p class="home-tagline">پڑھنے اور لکھنے کے کلچر کو فروغ دینا</p>
+    <p class="home-tagline">تنقیدی مطالعے اور تحریر کے کلچر کو فروغ دیتے ہوئے معاشرے میں تبدیلی لانا۔</p>
     <p>
-      کتابومری ایک رضاکارانہ تعلیمی اشاعتی پلیٹ فارم ہے جو محققین، طلباء، اساتذہ، پالیسی سازوں، صحافیوں اور عوام کے لیے بنایا گیا ہے۔
-      ہمارا مقصد تعلیم، خواندگی اور مطالعے سے متعلق شواہد پر مبنی گفتگو کو فروغ دینا ہے۔
+      شینا زبان میں "کتاب" کا مطلب ہے کتاب، اور "موری" کا مطلب ہے گفتگو۔ اسی لیے یہ پہل مطالعے اور تحریر کو فروغ دیتی ہے اور تعلیم، ثقافت، زبان اور انسانی تجربے سے جڑی ہر بات پر گفتگو کو جنم دیتی ہے۔ اس کا مقصد سمجھ بوجھ کے لیے فکر انگیز مکالمے کی حوصلہ افزائی کرنا ہے۔ یہاں آپ کو بلاگز، کالم، جائزے، عکاسی، تخلیقی تحریر اور خطوط ملیں گے۔
     </p>
     <p>
-      آپ یہاں بلاگز، اوپ ایڈز، خطوط، کتابی جائزے اور ذاتی عکاسی پائیں گے۔
-      اگر آپ اپنی تحریر شیئر کرنا چاہتے ہیں تو ہماری <a href="{{ site.baseurl }}/ur/guidelines/">ہدایات</a> پڑھیں اور <a href="{{ site.baseurl }}/ur/contact/">رابطہ</a> کریں۔
+      کتابومری ایک رضاکارانہ تعلیمی اشاعتی پلیٹ فارم ہے جو محققین، طلباء، اساتذہ، پالیسی سازوں اور عام قارئین کے لیے بنایا گیا ہے۔ اگر آپ اپنی تحریر شیئر کرنا چاہتے ہیں تو ہماری <span class="highlight"><a href="{{ site.baseurl }}/ur/guidelines/">ہدایات</a></span> پڑھیں اور <span class="highlight"><a href="{{ site.baseurl }}/ur/contact/">رابطہ</a></span> کریں۔
     </p>
   </section>
 
@@ -31,23 +29,23 @@ permalink: /
     <div class="section-cards">
 
       <div class="section-card">
+        <h2><a href="{{ site.baseurl }}/ur/opeds/">کالم</a></h2>
+        <p>تجربے اور تحقیق پر مبنی رائے جس میں عملی تجاویز شامل ہیں۔</p>
+      </div>
+
+      <div class="section-card">
         <h2><a href="{{ site.baseurl }}/ur/blogs/">بلاگز</a></h2>
         <p>تعلیم اور معاشرے پر مبنی تجزیاتی اور دلیل پر مبنی تحریریں۔</p>
       </div>
 
       <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/ur/opeds/">اوپ ایڈ</a></h2>
-        <p>تجربے اور تحقیق پر مبنی رائے جس میں عملی تجاویز شامل ہیں۔</p>
-      </div>
-
-      <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/ur/letters/">خطوط</a></h2>
-        <p>اساتذہ، طلباء اور محققین کی طرف سے ذاتی خطوط۔</p>
-      </div>
-
-      <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/ur/reviews/">کتابی جائزے</a></h2>
+        <h2><a href="{{ site.baseurl }}/ur/reviews/">جائزے</a></h2>
         <p>تعلیم، خواندگی اور تحقیق سے متعلق کتابوں کے تنقیدی جائزے۔</p>
+      </div>
+
+      <div class="section-card">
+        <h2><a href="{{ site.baseurl }}/ur/creative-writing/">تخلیقی تحریر</a></h2>
+        <p>افسانہ اور کہانیاں، شاعری، اور میں نے دیکھا۔</p>
       </div>
 
       <div class="section-card">
@@ -56,8 +54,13 @@ permalink: /
       </div>
 
       <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/ur/main-ne-kya-dekha/">میں نے کیا دیکھا</a></h2>
-        <p>مطالعے اور سیکھنے کی جگہوں پر فیلڈ نوٹس۔</p>
+        <h2><a href="{{ site.baseurl }}/ur/letters/">خطوط</a></h2>
+        <p>اساتذہ، طلباء اور محققین کی طرف سے ذاتی خطوط۔</p>
+      </div>
+
+      <div class="section-card">
+        <h2><a href="{{ site.baseurl }}/ur/events/">تقریبات</a></h2>
+        <p>ریڈنگ سرکل، ورکشاپس اور کتابومری کی دیگر تقریبات۔</p>
       </div>
 
     </div>
@@ -67,25 +70,17 @@ permalink: /
 
   <section class="home-welcome">
     <h1 class="home-heading">Welcome to Kitabomori</h1>
-    <p class="home-tagline">Promoting reading and writing culture</p>
+    <p class="home-tagline">Promotes a culture of critical reading and writing to transform society.</p>
     <p>
-      Kitabomori is a volunteer educational publishing platform created for researchers, students, teachers, policymakers, and the general public.
-      Our aim is to promote awareness through reading, writing and conversations about education, literacy, and the culture based on evidence.
+      In Shina, "kitab" means "book," and "mori" means "conversation." Hence, this initiative promotes reading and writing and ignites conversation about education, culture, language, and everything that relates to human experience. It aims to encourage thoughtful discussion for understanding. Here, you will find blogs, op-eds, reviews, reflections, creative writing, and letters.
     </p>
-  
-  <p>
-  Here you will find blogs, op-eds, letters, reviews, and personal reflections.
-  If you would like to contribute your writing, please read our <span class="highlight"><a href="{{ site.baseurl }}/en/guidelines/">Guidelines</a></span> and <span class="highlight"><a href="{{ site.baseurl }}/en/contact/">get in touch</a></span>.
-</p>
-</section>
+    <p>
+      Kitabomori is a volunteer educational publishing platform created for researchers, students, teachers, policymakers, and the general public. If you would like to contribute your writing, please read our <span class="highlight"><a href="{{ site.baseurl }}/en/guidelines/">submission guidelines</a></span> and <span class="highlight"><a href="{{ site.baseurl }}/en/contact/">get in touch</a></span>.
+    </p>
+  </section>
 
   <section class="home-sections">
     <div class="section-cards">
-
-      <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/en/blogs/">Blogs</a></h2>
-        <p>Analytical, argument-driven writing on education and society.</p>
-      </div>
 
       <div class="section-card">
         <h2><a href="{{ site.baseurl }}/en/opeds/">Op-Eds</a></h2>
@@ -93,8 +88,8 @@ permalink: /
       </div>
 
       <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/en/letters/">Letters</a></h2>
-        <p>Personal letters from teachers, students, and researchers.</p>
+        <h2><a href="{{ site.baseurl }}/en/blogs/">Blogs</a></h2>
+        <p>Analytical, argument-driven writing on education and society.</p>
       </div>
 
       <div class="section-card">
@@ -103,13 +98,23 @@ permalink: /
       </div>
 
       <div class="section-card">
+        <h2><a href="{{ site.baseurl }}/en/creative-writing/">Creative Writing</a></h2>
+        <p>Fiction & Stories, Poetry, and What I Saw.</p>
+      </div>
+
+      <div class="section-card">
         <h2><a href="{{ site.baseurl }}/en/reflections/">Reflections</a></h2>
         <p>Personal observations on reading and the educational journey.</p>
       </div>
 
       <div class="section-card">
-        <h2><a href="{{ site.baseurl }}/en/main-ne-kya-dekha/">What I Saw</a></h2>
-        <p>Field notes and visual observations on reading and learning spaces.</p>
+        <h2><a href="{{ site.baseurl }}/en/letters/">Letters</a></h2>
+        <p>Personal letters from teachers, students, and researchers.</p>
+      </div>
+
+      <div class="section-card">
+        <h2><a href="{{ site.baseurl }}/en/events/">Events</a></h2>
+        <p>Reading circles, workshops, and other Kitabomori events.</p>
       </div>
 
     </div>

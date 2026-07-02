@@ -1,11 +1,13 @@
 <!-- ============================================================
      ticker.html – scrolling news ticker for the Home page only.
-     Shows the 5 most recent items from blogs, opeds, letters,
-     and book_reviews combined, sorted by date (newest first).
+     Shows the 5 most recent items across Op-Eds, Blogs, Reviews,
+     Creative Writing (Fiction & Stories, Poetry, What I Saw),
+     Reflections, and Letters — sorted by date (newest first).
+     "Calls" (calls for submissions) are intentionally excluded.
 
      COLOURS:
        Background: #FFFFFF (dark mode: #1a1a1a)
-       Text:       #00C851 (bright green)
+       Text:       #aab52d
        Border:     1px bottom in #009F93
        Heading:    #009F93
 
@@ -14,28 +16,16 @@
      No icons, no emoji, plain text only.
      ============================================================ -->
 
-<!-- Step 1: Collect all items from the four collections into one array -->
+<!-- Step 1: Collect all items from every ticker-eligible collection -->
 {% assign ticker_items = "" | split: "" %}
-
-{% for item in site.blogs %}
-  {% assign ticker_items = ticker_items | push: item %}
-{% endfor %}
-
-{% for item in site.opeds %}
-  {% assign ticker_items = ticker_items | push: item %}
-{% endfor %}
-
-{% for item in site.letters %}
-  {% assign ticker_items = ticker_items | push: item %}
-{% endfor %}
-
-{% for item in site.reviews %}
-  {% assign ticker_items = ticker_items | push: item %}
-{% endfor %}
-
-{% for item in site.reflections %}
-  {% assign ticker_items = ticker_items | push: item %}
-{% endfor %}
+{% assign ticker_items = ticker_items | concat: site.opeds %}
+{% assign ticker_items = ticker_items | concat: site.blogs %}
+{% assign ticker_items = ticker_items | concat: site.reviews %}
+{% assign ticker_items = ticker_items | concat: site.fiction_stories %}
+{% assign ticker_items = ticker_items | concat: site.poetry %}
+{% assign ticker_items = ticker_items | concat: site.what_i_saw %}
+{% assign ticker_items = ticker_items | concat: site.reflections %}
+{% assign ticker_items = ticker_items | concat: site.letters %}
 
 <!-- Step 2: Sort by date descending, take top 5 -->
 {% assign ticker_sorted = ticker_items | sort: "date" | reverse %}
@@ -60,68 +50,48 @@
   <div class="ticker-overflow">
     <div class="ticker-track">
 
-      <!-- Step 4: Output each item with its collection-type label -->
-      {% for item in ticker_top5 %}
+      <!-- Step 4: Output each item with its collection-type label (twice, for a seamless loop) -->
+      {% for pass in (1..2) %}
+        {% for item in ticker_top5 %}
+          {% assign item_type_en = "" %}
+          {% assign item_type_ur = "" %}
 
-        <!-- Determine collection-type label -->
-        {% assign item_type_en = "" %}
-        {% assign item_type_ur = "" %}
+          {% if site.opeds contains item %}
+            {% assign item_type_en = "Op-Ed" %}
+            {% assign item_type_ur = "کالم" %}
+          {% elsif site.blogs contains item %}
+            {% assign item_type_en = "Blog" %}
+            {% assign item_type_ur = "بلاگ" %}
+          {% elsif site.reviews contains item %}
+            {% assign item_type_en = "Review" %}
+            {% assign item_type_ur = "جائزہ" %}
+          {% elsif site.fiction_stories contains item %}
+            {% assign item_type_en = "Fiction" %}
+            {% assign item_type_ur = "افسانہ" %}
+          {% elsif site.poetry contains item %}
+            {% assign item_type_en = "Poetry" %}
+            {% assign item_type_ur = "شاعری" %}
+          {% elsif site.what_i_saw contains item %}
+            {% assign item_type_en = "What I Saw" %}
+            {% assign item_type_ur = "میں نے دیکھا" %}
+          {% elsif site.reflections contains item %}
+            {% assign item_type_en = "Reflection" %}
+            {% assign item_type_ur = "عکاسی" %}
+          {% elsif site.letters contains item %}
+            {% assign item_type_en = "Letter" %}
+            {% assign item_type_ur = "خط" %}
+          {% endif %}
 
-        {% if site.blogs contains item %}
-          {% assign item_type_en = "Blog" %}
-          {% assign item_type_ur = "آراء" %}
-        {% elsif site.opeds contains item %}
-          {% assign item_type_en = "Op-Ed" %}
-          {% assign item_type_ur = "اوپیڈ" %}
-        {% elsif site.letters contains item %}
-          {% assign item_type_en = "Letter" %}
-          {% assign item_type_ur = "خط" %}
-        {% elsif site.reviews contains item %}
-          {% assign item_type_en = "Review" %}
-          {% assign item_type_ur = "تبصرہ" %}
-            {% if site.blogs reflections item %}
-          {% assign item_type_en = "reflections" %}
-          {% assign item_type_ur = "عکاسی" %}
-        {% endif %}
-
-        <span class="ticker-item" style="color:#00C851;">
-          <a href="{{ site.baseurl }}/{{ site.lang }}{{ item.url }}" style="color:#00C851; text-decoration:none;">
-            [{% if site.lang == 'ur' %}{{ item_type_ur }}{% else %}{{ item_type_en }}{% endif %}]
-            {% if site.lang == 'ur' %}{{ item.title_ur }}{% else %}{{ item.title_en }}{% endif %}
-            &ndash;
-            {{ item.date | date: "%d %B %Y" }}
-          </a>
-          &nbsp;&nbsp;&nbsp;
-        </span>
-
-      {% endfor %}
-
-      <!-- Step 5: Duplicate items so the scroll loops seamlessly -->
-      {% for item in ticker_top5 %}
-        {% assign item_type_en = "" %}
-        {% assign item_type_ur = "" %}
-        {% if site.blogs contains item %}
-          {% assign item_type_en = "Blog" %}
-          {% assign item_type_ur = "آراء" %}
-        {% elsif site.opeds contains item %}
-          {% assign item_type_en = "Op-Ed" %}
-          {% assign item_type_ur = "اوپیڈ" %}
-        {% elsif site.letters contains item %}
-          {% assign item_type_en = "Letter" %}
-          {% assign item_type_ur = "خط" %}
-        {% elsif site.reviews contains item %}
-          {% assign item_type_en = "Review" %}
-          {% assign item_type_ur = "تبصرہ" %}
-        {% endif %}
-        <span class="ticker-item" style="color:#00C851;" aria-hidden="true">
-          <a href="{{ site.baseurl }}/{{ site.lang }}{{ item.url }}" style="color:#00C851; text-decoration:none;">
-            [{% if site.lang == 'ur' %}{{ item_type_ur }}{% else %}{{ item_type_en }}{% endif %}]
-            {% if site.lang == 'ur' %}{{ item.title_ur }}{% else %}{{ item.title_en }}{% endif %}
-            &ndash;
-            {{ item.date | date: "%d %B %Y" }}
-          </a>
-          &nbsp;&nbsp;&nbsp;
-        </span>
+          <span class="ticker-item" style="color:#aab52d;" {% if pass == 2 %}aria-hidden="true"{% endif %}>
+            <a href="{{ site.baseurl }}/{{ site.lang }}{{ item.url }}" style="color:#aab52d; text-decoration:none;">
+              [{% if site.lang == 'ur' %}{{ item_type_ur }}{% else %}{{ item_type_en }}{% endif %}]
+              {% if site.lang == 'ur' %}{{ item.title_ur }}{% else %}{{ item.title_en }}{% endif %}
+              &ndash;
+              {{ item.date | date: "%d %B %Y" }}
+            </a>
+            &nbsp;&nbsp;&nbsp;
+          </span>
+        {% endfor %}
       {% endfor %}
 
     </div><!-- /.ticker-track -->

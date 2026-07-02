@@ -1,20 +1,20 @@
 ---
 layout: page
-title_en: "Reviews"
-title_ur: "تبصرہ"
-description_en: "Critical reviews of books on education, literacy, and research."
-description_ur: "تعلیم، خواندگی اور تحقیق سے متعلق کتابوں کے تنقیدی جائزے۔"
-permalink: /book-reviews/
+title_en: "Poetry"
+title_ur: "شاعری"
+description_en: "Verse that gives shape to feeling and observation."
+description_ur: "احساسات اور مشاہدات کو نظم کی زبان میں بیان کرنے کی کوشش۔"
+permalink: /creative-writing/poetry/
 ---
 
 {% if site.lang == 'ur' %}
-<p class="collection-intro">تعلیم، خواندگی اور تحقیق سے متعلق کتابوں کے تنقیدی جائزے۔</p>
+<p class="collection-intro">احساسات اور مشاہدات کو نظم کی زبان میں بیان کرنے کی کوشش۔</p>
 {% else %}
-<p class="collection-intro">Critical reviews of books on education, literacy, and research.</p>
+<p class="collection-intro">Verse that gives shape to feeling and observation.</p>
 {% endif %}
 
 <div class="card-grid">
-  {% assign sorted_items = site.book_reviews | sort: "date" | reverse %}
+  {% assign sorted_items = site.poetry | sort: "date" | reverse %}
   {% for item in sorted_items %}
   <div class="content-card">
     <h2 class="card-title">

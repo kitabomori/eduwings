@@ -1,4 +1,4 @@
-name: Build and Deploy EduWings
+name: Build and Deploy Kitabomori
 
 on:
   push:

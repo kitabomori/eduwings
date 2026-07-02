@@ -3,6 +3,10 @@ layout: post
 title_en: "Review: The Three Questions"
 title_ur: ""
 date: 2026-07-01
+author_en: ""
+author_ur: ""
+bio_en: ""
+bio_ur: ""
 description_en: ""
 description_ur: ""
 ---

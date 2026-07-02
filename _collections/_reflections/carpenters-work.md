@@ -5,6 +5,8 @@ title_ur: ""
 date: 2026-06-30
 author_en: ""
 author_ur: ""
+bio_en: ""
+bio_ur: ""
 description_en: "A reflection on what watching a carpenter at work reveals about preparation, perseverance, craftsmanship, and the quiet dignity of skilled labor."
 description_ur: ""
 ---

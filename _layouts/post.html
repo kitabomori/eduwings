@@ -36,6 +36,18 @@ layout: base
     {% endif %}
   </p>
 
+  <!-- Author biography, shown only if provided. Layout stays intact if missing. -->
+  {% assign post_bio = page.bio_en %}
+  {% if site.lang == 'ur' %}{% assign post_bio = page.bio_ur %}{% endif %}
+  {% if post_bio and post_bio != "" %}
+  <div class="post-author-bio">
+    {% if post_author and post_author != "" %}
+      <p class="post-author-bio-name">{{ post_author }}</p>
+    {% endif %}
+    <p class="post-author-bio-text">{{ post_bio }}</p>
+  </div>
+  {% endif %}
+
   <!-- Back link -->
   <p class="post-back">
     <button onclick="history.back()" class="post-back-btn">

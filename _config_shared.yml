@@ -18,15 +18,27 @@ collections:
   letters:
     output: true
     permalink: /:collection/:name/
-  book_reviews:
+  reviews:
     output: true
-    permalink: /book-reviews/:name/
+    permalink: /reviews/:name/
   reflections:
     output: true
     permalink: /:collection/:name/
   calls:
     output: true
     permalink: /:collection/:name/
+  fiction_stories:
+    output: true
+    permalink: /creative-writing/fiction-stories/:name/
+  poetry:
+    output: true
+    permalink: /creative-writing/poetry/:name/
+  what_i_saw:
+    output: true
+    permalink: /creative-writing/what-i-saw/:name/
+  events:
+    output: true
+    permalink: /events/:name/
 
 # Default layouts
 defaults:
@@ -47,7 +59,7 @@ defaults:
       layout: post
   - scope:
       path: ""
-      type: book_reviews
+      type: reviews
     values:
       layout: post
   - scope:
@@ -58,6 +70,26 @@ defaults:
   - scope:
       path: ""
       type: calls
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: fiction_stories
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: poetry
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: what_i_saw
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: events
     values:
       layout: post
 

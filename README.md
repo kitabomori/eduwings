@@ -1,7 +1,7 @@
 # Kitabomori – کتابومری
 
-**Promoting reading through evidence-based research**  
-تحقیق پر مبنی مواد کے ذریعے مطالعے کا فروغ
+**Promoting a culture of critical reading and writing to transform society**
+تنقیدی مطالعے اور تحریر کے کلچر کو فروغ دیتے ہوئے معاشرے میں تبدیلی لانا
 
 A bilingual (English/Urdu) educational publishing website built with Jekyll, Tailwind CSS, and vanilla JavaScript. Deployed to GitHub Pages at:
 
@@ -24,16 +24,22 @@ A bilingual (English/Urdu) educational publishing website built with Jekyll, Tai
 
 ## What this site is
 
-Kitabomori publishes six types of content:
+Kitabomori publishes ten types of content:
 
 | Type | Folder | Purpose |
 |------|--------|---------|
-| Blogs | `_collections/_blogs/` | Evidence-based arguments (800–1000 words) |
+| Blogs | `_collections/_blogs/` | Evidence-based arguments (500–750 words) |
 | Op-Eds | `_collections/_opeds/` | Experience-grounded opinion with recommendations |
+| Reviews | `_collections/_reviews/` | Critical reviews of education-related books |
 | Letters | `_collections/_letters/` | Personal letters from educators and students |
-| Book Reviews | `_collections/_book_reviews/` | Critical reviews of education-related books |
 | Reflections | `_collections/_reflections/` | Short personal observations |
-| Calls | `_collections/_calls/` | Announcements and calls for submissions |
+| Fiction & Stories | `_collections/_fiction_stories/` | Short fiction, under the Creative Writing menu |
+| Poetry | `_collections/_poetry/` | Poems, under the Creative Writing menu |
+| What I Saw | `_collections/_what_i_saw/` | Short field notes, under the Creative Writing menu |
+| Events | `_collections/_events/` | Reading circles, workshops, and other events |
+| Calls | `_collections/_calls/` | Announcements and calls for submissions (not shown in nav/ticker) |
+
+Fiction & Stories, Poetry, and What I Saw sit together under a **Creative Writing** dropdown in the main navigation.
 
 ---
 
@@ -63,10 +69,10 @@ You do not need to know code to add content. Follow these steps:
 
 ### Step 1 – Copy the template
 
-Copy `_drafts/template-post.md` into the correct folder. For example, to add a new letter:
+Copy `_drafts/template-post.md` into the correct folder. For example, to add a new poem:
 
 ```
-_collections/_letters/my-letter-title.md
+_collections/_poetry/my-poem-title.md
 ```
 
 Use only lowercase letters, numbers, and hyphens in the filename (no spaces).
@@ -81,10 +87,16 @@ layout: post
 title_en: "Your English Title"
 title_ur: "آپ کا اردو عنوان"
 date: 2026-07-01
+author_en: ""
+author_ur: ""
+bio_en: ""
+bio_ur: ""
 description_en: "A one-sentence summary in English."
 description_ur: "ایک جملے میں اردو خلاصہ۔"
 ---
 ```
+
+`author_en`/`author_ur` and `bio_en`/`bio_ur` are optional. If left blank, the byline falls back to just the date, and no bio block is shown — the layout stays intact either way.
 
 ### Step 3 – Write your content
 
@@ -104,6 +116,8 @@ Write your English content here.
 
 If you only have English content, you can write it without the Liquid tags — just put it directly in the file. The Urdu build will display it as well until a translation is added.
 
+Post titles are centred and body paragraphs are automatically justified (right-aligned reading direction for Urdu) — no extra styling is needed.
+
 ### Step 4 – Save and push
 
 If using the GitHub website:
@@ -120,7 +134,7 @@ git commit -m "Add new letter: my-letter-title"
 git push
 ```
 
-The site will rebuild automatically within 2–3 minutes.
+The site will rebuild automatically within 2–3 minutes. New posts automatically appear in their category listing page, the homepage ticker, and search — no manual index updates are needed.
 
 ---
 
@@ -163,7 +177,7 @@ You do not need to do anything else.
 |--------|-----|---------|
 | Teal | `#009F93` | Header, footer, nav, buttons, headings, links |
 | White | `#FFFFFF` | Page backgrounds, cards, light mode |
-| Green | `#00C851` | Ticker text |
+| Ticker text | `#aab52d` | Homepage scrolling ticker text |
 
 No other accent colours are used anywhere on the site.
 
@@ -171,33 +185,17 @@ No other accent colours are used anywhere on the site.
 
 ## Adding social links and Google Form
 
-### YouTube and social media
+### Social media
 
-Open `_includes/footer.html`. Find this comment:
+Social links live in `_includes/footer.html` and already point to the live Kitabomori accounts (Facebook, Instagram, X, YouTube). To update any of them, open `_includes/footer.html` and edit the relevant `href` in Row 3.
 
-```html
-<!-- YouTube: replace # with your channel URL when ready -->
-<a href="#" style="color:#FFFFFF;">YouTube</a>
-```
+### Google Form (Submission page)
 
-Replace `#` with your YouTube channel URL, for example:
+The submission Google Form link lives in two places:
+- `pages/submission.md` — the CTA button
+- `_includes/footer.html` — the "Submission Form" footer link
 
-```html
-<a href="https://www.youtube.com/@YourChannel" style="color:#FFFFFF;">YouTube</a>
-```
-
-Add more links in the same format for other platforms.
-
-### Google Form (Contact page)
-
-Open `pages/contact.md`. Find this block:
-
-```html
-<!-- Google Form embed: replace the src URL below with your actual Google Form embed link when ready -->
-<!-- <iframe src="YOUR_GOOGLE_FORM_EMBED_URL_HERE" ...></iframe> -->
-```
-
-Remove the `<!--` and `-->` comment markers, then replace `YOUR_GOOGLE_FORM_EMBED_URL_HERE` with your actual Google Form embed URL.
+To change the form URL, replace `https://forms.gle/a3AosqLwLdP7q9Co7` in both files.
 
 ---
 
@@ -209,28 +207,42 @@ kitabomori.github.io/
 ├── _config_shared.yml             ← Collections and settings shared by both languages
 ├── _config_en.yml                 ← English-specific config (lang, font, direction)
 ├── _config_ur.yml                 ← Urdu-specific config (lang, font, direction RTL)
-├── _data/navigation.yml           ← All nav links (edit to add/remove menu items)
+├── _data/navigation.yml           ← All nav links, incl. Creative Writing dropdown children
 ├── _includes/                     ← Reusable HTML fragments
 │   ├── head.html                  ← <head> block (fonts, CSS, metadata)
-│   ├── header.html                ← Top navigation bar
-│   ├── footer.html                ← Footer (edit for social links)
+│   ├── header.html                ← Top navigation bar + dropdown
+│   ├── footer.html                ← Footer (social links, submission, guidelines, email)
 │   └── ticker.html                ← Scrolling news ticker (Home only)
 ├── _layouts/                      ← Page templates
 │   ├── base.html                  ← Root layout (html, head, body)
 │   ├── page.html                  ← For standard pages
-│   └── post.html                  ← For collection items
+│   └── post.html                  ← For collection items (incl. author bio block)
 ├── _collections/                  ← All published content lives here
 │   ├── _blogs/
 │   ├── _opeds/
+│   ├── _reviews/
 │   ├── _letters/                  ← Sample: letter-to-teacher.md
-│   ├── _book_reviews/
 │   ├── _reflections/
+│   ├── _fiction_stories/
+│   ├── _poetry/
+│   ├── _what_i_saw/
+│   ├── _events/
 │   └── _calls/
 ├── pages/                         ← Static pages
 │   ├── home.md
 │   ├── guidelines.md
+│   ├── submission.md
+│   ├── reviews.md
+│   ├── book-reviews-redirect.md   ← Redirects old /book-reviews/ URL to /reviews/
+│   ├── creative-writing.md        ← Creative Writing landing page
+│   ├── fiction-stories.md
+│   ├── poetry.md
+│   ├── what-i-saw.md
+│   ├── events.md
 │   ├── reflections.md
-│   ├── main-ne-kya-dekha.md
+│   ├── opeds.md
+│   ├── blogs.md
+│   ├── letters.md
 │   ├── contact.md
 │   ├── search.md
 │   └── privacy.md
@@ -241,7 +253,7 @@ kitabomori.github.io/
 │   └── js/
 │       ├── theme.js               ← Dark mode logic
 │       └── search.js              ← Client-side search
-├── search_index.json              ← Auto-generated search index
+├── search_index.json              ← Auto-generated search index (all collections)
 ├── index.html                     ← Language-detect redirect
 ├── 404.html                       ← Bilingual 404 page
 ├── tailwind.config.js             ← Tailwind configuration + brand colours

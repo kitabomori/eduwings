@@ -7,9 +7,13 @@ permalink: /search_index.json
 {% assign all_items = all_items | concat: site.blogs %}
 {% assign all_items = all_items | concat: site.opeds %}
 {% assign all_items = all_items | concat: site.letters %}
-{% assign all_items = all_items | concat: site.book_reviews %}
+{% assign all_items = all_items | concat: site.reviews %}
 {% assign all_items = all_items | concat: site.reflections %}
 {% assign all_items = all_items | concat: site.calls %}
+{% assign all_items = all_items | concat: site.fiction_stories %}
+{% assign all_items = all_items | concat: site.poetry %}
+{% assign all_items = all_items | concat: site.what_i_saw %}
+{% assign all_items = all_items | concat: site.events %}
 {% assign sorted = all_items | sort: "date" | reverse %}
 {% for item in sorted %}
   {
@@ -18,8 +22,8 @@ permalink: /search_index.json
     "url_en": "{{ site.baseurl }}/en{{ item.url }}",
     "url_ur": "{{ site.baseurl }}/ur{{ item.url }}",
     "date": "{{ item.date | date: '%Y-%m-%d' }}",
-    "type_en": "{% if site.blogs contains item %}Blog{% elsif site.opeds contains item %}Op-Ed{% elsif site.letters contains item %}Letter{% elsif site.book_reviews contains item %}Book Review{% elsif site.reflections contains item %}Reflection{% else %}Call{% endif %}",
-    "type_ur": "{% if site.blogs contains item %}بلاگ{% elsif site.opeds contains item %}اوپیڈ{% elsif site.letters contains item %}خط{% elsif site.book_reviews contains item %}کتابی جائزہ{% elsif site.reflections contains item %}عکاسی{% else %}دعوت{% endif %}"
+    "type_en": "{% if site.blogs contains item %}Blog{% elsif site.opeds contains item %}Op-Ed{% elsif site.letters contains item %}Letter{% elsif site.reviews contains item %}Review{% elsif site.reflections contains item %}Reflection{% elsif site.fiction_stories contains item %}Fiction & Stories{% elsif site.poetry contains item %}Poetry{% elsif site.what_i_saw contains item %}What I Saw{% elsif site.events contains item %}Event{% else %}Call{% endif %}",
+    "type_ur": "{% if site.blogs contains item %}بلاگ{% elsif site.opeds contains item %}کالم{% elsif site.letters contains item %}خط{% elsif site.reviews contains item %}جائزہ{% elsif site.reflections contains item %}عکاسی{% elsif site.fiction_stories contains item %}افسانہ اور کہانیاں{% elsif site.poetry contains item %}شاعری{% elsif site.what_i_saw contains item %}میں نے دیکھا{% elsif site.events contains item %}تقریب{% else %}دعوت{% endif %}"
   }{% unless forloop.last %},{% endunless %}
 {% endfor %}
 ]

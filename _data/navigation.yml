@@ -1,37 +1,62 @@
+# ============================================================
+# navigation.yml – site-wide navigation data
+# Each top-level item may optionally have a `children` list,
+# which header.html renders as a dropdown (desktop) / accordion
+# (mobile). Items without `children` render as plain links.
+# ============================================================
+
 - name_en: "Home"
-  name_ur: "گھر"
+  name_ur: "مرکزی صفحہ"
   url_en: "/en/"
   url_ur: "/ur/"
+
+- name_en: "Op-Eds"
+  name_ur: "کالم"
+  url_en: "/en/opeds/"
+  url_ur: "/ur/opeds/"
 
 - name_en: "Blogs"
   name_ur: "بلاگز"
   url_en: "/en/blogs/"
   url_ur: "/ur/blogs/"
 
-- name_en: "Op-Eds"
-  name_ur: "اوپ ایڈ"
-  url_en: "/en/opeds/"
-  url_ur: "/ur/opeds/"
-
-- name_en: "Letters"
-  name_ur: "خطوط"
-  url_en: "/en/letters/"
-  url_ur: "/ur/letters/"
-
 - name_en: "Reviews"
-  name_ur: "تبصرہ"
+  name_ur: "جائزے"
   url_en: "/en/reviews/"
   url_ur: "/ur/reviews/"
+
+- name_en: "Creative Writing"
+  name_ur: "تخلیقی تحریر"
+  url_en: "/en/creative-writing/"
+  url_ur: "/ur/creative-writing/"
+  children:
+    - name_en: "Fiction & Stories"
+      name_ur: "افسانہ اور کہانیاں"
+      url_en: "/en/creative-writing/fiction-stories/"
+      url_ur: "/ur/creative-writing/fiction-stories/"
+    - name_en: "Poetry"
+      name_ur: "شاعری"
+      url_en: "/en/creative-writing/poetry/"
+      url_ur: "/ur/creative-writing/poetry/"
+    - name_en: "What I Saw"
+      name_ur: "میں نے دیکھا"
+      url_en: "/en/creative-writing/what-i-saw/"
+      url_ur: "/ur/creative-writing/what-i-saw/"
 
 - name_en: "Reflections"
   name_ur: "عکاسی"
   url_en: "/en/reflections/"
   url_ur: "/ur/reflections/"
 
-- name_en: "What I Saw"
-  name_ur: "میں نے کیا دیکھا"
-  url_en: "/en/main-ne-kya-dekha/"
-  url_ur: "/ur/main-ne-kya-dekha/"
+- name_en: "Letters"
+  name_ur: "خطوط"
+  url_en: "/en/letters/"
+  url_ur: "/ur/letters/"
+
+- name_en: "Events"
+  name_ur: "تقریبات"
+  url_en: "/en/events/"
+  url_ur: "/ur/events/"
 
 - name_en: "Search"
   name_ur: "تلاش"
