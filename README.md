@@ -191,11 +191,9 @@ Social links live in `_includes/footer.html` and already point to the live Kitab
 
 ### Google Form (Submission page)
 
-The submission Google Form link lives in two places:
-- `pages/submission.md` — the CTA button
-- `_includes/footer.html` — the "Submission Form" footer link
+The submission Google Form link lives in `pages/submission.md` (the CTA button). That's the only place someone can reach it directly — the footer only links to the Submission *page*, not the form itself, so visitors always read the submission instructions first.
 
-To change the form URL, replace `https://forms.gle/a3AosqLwLdP7q9Co7` in both files.
+To change the form URL, replace `https://forms.gle/a3AosqLwLdP7q9Co7` in `pages/submission.md`.
 
 ---
 
